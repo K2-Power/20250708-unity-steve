@@ -6,16 +6,20 @@ public class Player : MonoBehaviour
         public float jumpForce = 7f;     // ジャンプの強さ
         public LayerMask groundLayer;    // 地面のレイヤーを指定するためのフィールド
         public Transform groundCheck;    // 地面チェック用の位置（空オブジェクトを設定）
+        public GameObject MainPlayer;
+        public GameObject ClonePlayer;
 
-        private Rigidbody2D rb;
+
+    private Rigidbody2D rb;
         private bool isGrounded;
 
         public GameObject player2Prefab; // Player2のプレハブを指定
 
     void Start()
-        {
-            rb = GetComponent<Rigidbody2D>();  // Rigidbody2Dを取得
-        }
+    {
+        CollisionDisabler.SetActiveCollision(false,MainPlayer,ClonePlayer);
+        rb = GetComponent<Rigidbody2D>();  // Rigidbody2Dを取得
+    }
 
         void Update()
         {
@@ -43,7 +47,7 @@ public class Player : MonoBehaviour
                 Debug.LogWarning("Player2プレハブが設定されていません！");
             }
         }
-        // ジャンプ（Wキー）
+        // ジャンプ（Spaceキー）
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
@@ -55,12 +59,12 @@ public class Player : MonoBehaviour
         {
             if (other.CompareTag("Dead"))
             {
-                Destroy(gameObject); // �����iPlayer�j���폜
+                Destroy(gameObject); // playerを壊す
             }
         }
 
     // Groundに触れている間
-    void OnCollisionStay2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.name == "Ground")
         {
@@ -69,7 +73,7 @@ public class Player : MonoBehaviour
     }
 
     // Groundから離れたとき
-    void OnCollisionExit2D(Collision2D collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.name == "Ground")
         {
