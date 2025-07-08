@@ -66,7 +66,11 @@ public class Player : MonoBehaviour
     // Groundに触れている間
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Ground")
+        if (collision.collider.CompareTag("Ground"))
+        {
+            isGrounded = true;
+        }
+        else if (collision.collider.CompareTag("Button")) 
         {
             isGrounded = true;
         }
@@ -76,6 +80,10 @@ public class Player : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.name == "Ground")
+        {
+            isGrounded = false;
+        }
+        else if (collision.collider.CompareTag("Button"))
         {
             isGrounded = false;
         }
