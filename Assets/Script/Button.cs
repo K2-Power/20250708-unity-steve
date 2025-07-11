@@ -1,24 +1,33 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Button : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private SpriteRenderer spriteRenderer;
+
+    // DeadÇ…êGÇÍÇƒÇ¢ÇÈÇ©Ç«Ç§Ç©ÇÃèÛë‘
+    public bool isTouchingDead { get; private set; } = false;
+
     void Start()
     {
-        
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
-    }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.name == "Dead")
+        if (other.CompareTag("Dead"))
         {
-            Destroy(gameObject);
+            spriteRenderer.enabled = false;
+            isTouchingDead = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Dead"))
+        {
+            spriteRenderer.enabled = true;
+            isTouchingDead = false;
         }
     }
 }
