@@ -17,7 +17,9 @@ public class Button : MonoBehaviour
     {
         if (other.CompareTag("Dead"))
         {
-            spriteRenderer.enabled = false;
+            Vector3 localscale = gameObject.transform.localScale;
+            localscale.x *= -1;
+            transform.localScale = localscale;
             isTouchingDead = true;
         }
     }
@@ -26,7 +28,9 @@ public class Button : MonoBehaviour
     {
         if (other.CompareTag("Dead"))
         {
-            spriteRenderer.enabled = true;
+            Vector3 localscale = gameObject.transform.localScale;
+            localscale.x *= -1;
+            transform.localScale = localscale;
             isTouchingDead = false;
         }
     }
