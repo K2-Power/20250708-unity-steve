@@ -35,9 +35,12 @@ public class EnemyScript : MonoBehaviour
     private bool isMoving = true;
     private Vector3 currentDirection;
     private float currentSpeed;
+    private static EnemyScript instance;
 
     void Start()
     {
+
+        instance = this;
         startPosition = transform.position;
 
         // 移動ポイントが設定されていない場合、デフォルトのパターンを作成
@@ -271,4 +274,22 @@ public class EnemyScript : MonoBehaviour
             Gizmos.DrawRay(transform.position, currentDirection * 2f);
         }
     }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("ego"))
+        {
+            SetMovementEnabled(false);
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("ego"))
+        {
+            SetMovementEnabled(true);
+        }
+    }
+
+
+
 }

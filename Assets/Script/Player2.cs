@@ -6,8 +6,19 @@ public class Player2 : MonoBehaviour
 
     void Start()
     {
-        
             // 指定時間後にこのオブジェクトを削除する
             Destroy(gameObject, lifetime);
+    }
+    void Update()
+    {
+        
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Dead"))
+        {
+
+        }
     }
 }
