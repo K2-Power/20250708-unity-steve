@@ -3,7 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class Button : MonoBehaviour
 {
+    
     public static Button instance;
+    
 
     // DeadÇ…êGÇÍÇƒÇ¢ÇÈÇ©Ç«Ç§Ç©ÇÃèÛë‘
     public bool isTouchingDead { get; private set; } = false;
@@ -20,7 +22,7 @@ public class Button : MonoBehaviour
             Vector3 localscale = gameObject.transform.localScale;
             localscale.x *= -1;
             transform.localScale = localscale;
-            isTouchingDead = true;
+            
         }
     }
 
@@ -32,6 +34,19 @@ public class Button : MonoBehaviour
             localscale.x *= -1;
             transform.localScale = localscale;
             isTouchingDead = false;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("Dead"))
+        {
+            bool isMoving = EnemyScript.instance.IsMoving();
+            if (!isMoving)
+            {
+                Debug.Log("Ç”ÇÁÇìÇàÇãÇäÇ”Ç•ÇµÇ§ÇÜÇÜÇàÇì");
+                isTouchingDead = true;
+            }
         }
     }
 }

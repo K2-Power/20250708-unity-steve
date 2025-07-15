@@ -35,7 +35,7 @@ public class EnemyScript : MonoBehaviour
     private bool isMoving = true;
     private Vector3 currentDirection;
     private float currentSpeed;
-    private static EnemyScript instance;
+    public static EnemyScript instance;
 
     void Start()
     {

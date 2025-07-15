@@ -68,7 +68,7 @@ public class Player : MonoBehaviour
     {
         if (collision.collider.CompareTag("Ground"))
         {
-            Debug.Log("地面");
+            
             isGrounded = true;
         }
         else if (collision.collider.CompareTag("Button")) 
@@ -82,7 +82,7 @@ public class Player : MonoBehaviour
     {
         if (collision.collider.CompareTag("Ground"))
         {
-            Debug.Log("空中");
+           
             isGrounded = false;
         }
         else if (collision.collider.CompareTag("Button"))
