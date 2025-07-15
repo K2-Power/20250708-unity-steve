@@ -8,11 +8,8 @@ public class Player : MonoBehaviour
         public Transform groundCheck;    // 地面チェック用の位置（空オブジェクトを設定）
         public GameObject MainPlayer;
         public GameObject ClonePlayer;
-
-
-    private Rigidbody2D rb;
+        private Rigidbody2D rb;
         private bool isGrounded;
-
         public GameObject player2Prefab; // Player2のプレハブを指定
 
     void Start()
