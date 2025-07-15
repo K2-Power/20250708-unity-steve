@@ -3,6 +3,7 @@ using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 public class Goal : MonoBehaviour
 {
+<<<<<<< HEAD
     public Button buttonScript; // インスペクターでButtonのスクリプトをドラッグして渡す
     public Animator animator;
 
@@ -28,8 +29,26 @@ public class Goal : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") && Button.instance.isTouchingDead == true)
+=======
+    public GoalButton GoalButton; // インスペクターでButtonのスクリプトをドラッグして渡す
+    public string sceneName; // インスペクターで指定するシーン名（例："GameScene"）
+    public void ChangeScene()
+    {
+        if (!string.IsNullOrEmpty(sceneName))
         {
-            SceneManager.LoadScene("GameScene2");
+            SceneManager.LoadScene(sceneName);
+        }
+        else
+        {
+            Debug.LogWarning("sceneNameが指定されていません！");
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player") && GoalButton.isTouchingDead)
+>>>>>>> origin/main
+        {
+            ChangeScene();
         }
     }
 }

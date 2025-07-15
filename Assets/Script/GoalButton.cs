@@ -1,25 +1,23 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Button : MonoBehaviour
+public class GoalButton : MonoBehaviour
 {
-    public static Button instance;
+    private SpriteRenderer spriteRenderer;
 
     // DeadÇ…êGÇÍÇƒÇ¢ÇÈÇ©Ç«Ç§Ç©ÇÃèÛë‘
     public bool isTouchingDead { get; private set; } = false;
 
     void Start()
     {
-        instance = this;
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Dead"))
         {
-            Vector3 localscale = gameObject.transform.localScale;
-            localscale.x *= -1;
-            transform.localScale = localscale;
+            spriteRenderer.enabled = false;
             isTouchingDead = true;
         }
     }
@@ -28,9 +26,7 @@ public class Button : MonoBehaviour
     {
         if (other.CompareTag("Dead"))
         {
-            Vector3 localscale = gameObject.transform.localScale;
-            localscale.x *= -1;
-            transform.localScale = localscale;
+            spriteRenderer.enabled = true;
             isTouchingDead = false;
         }
     }
