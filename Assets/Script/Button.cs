@@ -4,12 +4,14 @@ using UnityEngine.SceneManagement;
 public class Button : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
+    public static Button instance;
 
     // Dead‚ÉG‚ê‚Ä‚¢‚é‚©‚Ç‚¤‚©‚Ìó‘Ô
     public bool isTouchingDead { get; private set; } = false;
 
     void Start()
     {
+        instance = this;
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
