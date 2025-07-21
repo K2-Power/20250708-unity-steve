@@ -1,55 +1,75 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-        public float moveSpeed = 5f;     // 左右の移動速度
-        public float jumpForce = 7f;     // ジャンプの強さ
-        public LayerMask groundLayer;    // 地面のレイヤーを指定するためのフィールド
-        public Transform groundCheck;    // 地面チェック用の位置（空オブジェクトを設定）
-        public GameObject MainPlayer;
-        public GameObject ClonePlayer;
-        private Rigidbody2D rb;
-        private bool isGrounded;
-        public GameObject player2Prefab; // Player2のプレハブを指定
+    public float moveSpeed = 5f;     // 左右の移動速度
+    public float jumpForce = 7f;     // ジャンプの強さ
+    public LayerMask groundLayer;    // 地面のレイヤーを指定するためのフィールド
+    public Transform groundCheck;    // 地面チェック用の位置（空オブジェクトを設定）
+    public GameObject MainPlayer;
+    public GameObject ClonePlayer;
+    public int CloneCount = 0;
+    private Rigidbody2D rb;
+    private bool isGrounded;
+    public GameObject player2Prefab; // Player2のプレハブを指定
+    public static Player instance;
 
     void Start()
     {
+        instance = this;
         CollisionDisabler.SetActiveCollision(false,MainPlayer,ClonePlayer);
         rb = GetComponent<Rigidbody2D>();  // Rigidbody2Dを取得
+
     }
 
         void Update()
         {
-            // 左右移動（A：左, D：右）
-            float moveX = 0f;
-            if (Input.GetKey(KeyCode.A))
+        float hori = Input.GetAxis("Horizontal");
+        float vert = Input.GetAxis("Vertical");
+        // 左右移動（A：左, D：右）
+        float moveX = 0f;
+            if (hori < 0)
             {
                 moveX = -1f;
             }
-            else if (Input.GetKey(KeyCode.D))
+            else if (hori > 0)
             {
                 moveX = 1f;
             }
-            rb.linearVelocity = new Vector2(moveX * moveSpeed, rb.linearVelocity.y);
+
+        rb.linearVelocity = new Vector2(moveX * moveSpeed, rb.linearVelocity.y);
+
+        if (CloneCount <= 0)
+        {
+            Destroy(gameObject);
+        }
+
+
 
         // 右クリック（マウス右ボタン）で生成
         if (Input.GetMouseButtonDown(1)) // 0=左, 1=右
         {
-            if (player2Prefab != null)
+            if (CloneCount <= 0)
             {
-                Instantiate(player2Prefab, transform.position, Quaternion.identity);
-            }
-            else
-            {
-                Debug.LogWarning("Player2プレハブが設定されていません！");
+                if (player2Prefab != null)
+                {
+                    CloneCount--;
+                    Instantiate(player2Prefab, transform.position, Quaternion.identity);
+                }
+                else
+                {
+                    Debug.LogWarning("Player2プレハブが設定されていません！");
+                }
             }
         }
         // ジャンプ（Spaceキー）
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetKeyDown("joystick button 0") && isGrounded)
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             }
         }
+        
 
 
         private void OnTriggerEnter2D(Collider2D other)
