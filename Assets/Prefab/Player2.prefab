@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5709042676218134647}
   - component: {fileID: 5266935501547768400}
   - component: {fileID: 8342906544589424635}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Player2
   m_TagString: ego
   m_Icon: {fileID: 0}
@@ -166,3 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 5
+  spriteRenderer: {fileID: 0}
+  blinkSpeed: 20
+  minAlpha: 0.5
+  maxAlpha: 1

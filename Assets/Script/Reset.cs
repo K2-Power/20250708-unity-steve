@@ -1,11 +1,22 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement; // シーンの管理に必要
 
 public class Reset : MonoBehaviour
 {
+    public GameObject ResetText;
+
+    void Start()
+    {
+        ResetText.SetActive(false);
+    }
     // Update関数は毎フレーム呼ばれる
     void Update()
     {
+        if (Player.instance.CloneCount <= 0)
+        {
+            ResetText.SetActive(true);
+        }
         // 「R」キーが押されたらリセット
         if (Input.GetKeyDown("joystick button 3"))
         {

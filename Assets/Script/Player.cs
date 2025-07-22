@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class Player : MonoBehaviour
 {
@@ -13,39 +14,51 @@ public class Player : MonoBehaviour
     public int CloneCount = 0;
     private Rigidbody2D rb;
     private bool isGrounded;
-    private float ShakingSpeed = 0.0f;
     public GameObject player2Prefab; // Player2のプレハブを指定
+    public GameObject ShotPoint;
+    public GameObject ResetText;
     public static Player instance;
+    public bool autoFlipChildren = true;
+    private bool facingRight = true;
+    private Transform[] childTransforms;
+    private Vector3[] originalChildPositions;
 
     void Start()
     {
+        StoreOriginalChildPositions();
         instance = this;
-        CollisionDisabler.SetActiveCollision(false,MainPlayer,ClonePlayer);
         rb = GetComponent<Rigidbody2D>();  // Rigidbody2Dを取得
-
+        ResetText.SetActive(false);
+        
     }
 
         void Update()
         {
         //Gamepad.current?.SetMotorSpeeds(2.0f, 2.0f);
-        float hori = Input.GetAxis("Horizontal");
+        float horizontal = Input.GetAxis("Horizontal");
         float vert = Input.GetAxis("Vertical");
         // 左右移動（A：左, D：右）
-        float moveX = 0f;
-            if (hori < 0)
-            {
-                moveX = -1f;
-            }
-            else if (hori > 0)
-            {
-                moveX = 1f;
-            }
-
-        rb.linearVelocity = new Vector2(moveX * moveSpeed, rb.linearVelocity.y);
-
-        if (CloneCount <= 0)
+        if (Mathf.Abs(horizontal) > 0.1f)
         {
-            Destroy(gameObject);
+            Vector3 movement = new Vector3(horizontal * moveSpeed * Time.deltaTime, 0, 0);
+            transform.Translate(movement);
+
+            // 自動反転が有効な場合
+            if (autoFlipChildren)
+            {
+                // 右向きから左向きに変わった時
+                if (horizontal < 0 && facingRight)
+                {
+                    FlipChildren();
+                    facingRight = false;
+                }
+                // 左向きから右向きに変わった時
+                else if (horizontal > 0 && !facingRight)
+                {
+                    FlipChildren();
+                    facingRight = true;
+                }
+            }
         }
 
 
@@ -58,7 +71,7 @@ public class Player : MonoBehaviour
                 if (player2Prefab != null)
                 {
                     CloneCount--;
-                    Instantiate(player2Prefab, transform.position, Quaternion.identity);
+                    Instantiate(player2Prefab, ShotPoint.transform.position, Quaternion.identity);
                 }
                 else
                 {
@@ -75,7 +88,7 @@ public class Player : MonoBehaviour
                 if (player2Prefab != null)
                 {
                     CloneCount--;
-                    Instantiate(player2Prefab, transform.position, Quaternion.identity);
+                    Instantiate(player2Prefab, ShotPoint.transform.position, Quaternion.identity);
                 }
                 else
                 {
@@ -92,13 +105,14 @@ public class Player : MonoBehaviour
         
 
 
-        private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Dead"))
         {
-            if (other.CompareTag("Dead"))
-            {
-                Destroy(gameObject); // playerを壊す
-            }
+            ResetText.SetActive(true);
+            Destroy(gameObject); // playerを壊す
         }
+    }
 
     // Groundに触れている間
     private void OnCollisionStay2D(Collision2D collision)
@@ -127,6 +141,34 @@ public class Player : MonoBehaviour
             isGrounded = false;
         }
     }
+
+    void StoreOriginalChildPositions()
+    {
+        int childCount = transform.childCount;
+        childTransforms = new Transform[childCount];
+        originalChildPositions = new Vector3[childCount];
+
+        for (int i = 0; i < childCount; i++)
+        {
+            childTransforms[i] = transform.GetChild(i);
+            originalChildPositions[i] = childTransforms[i].localPosition;
+        }
+    }
+
+    void FlipChildren()
+    {
+        for (int i = 0; i < childTransforms.Length; i++)
+        {
+            if (childTransforms[i] != null)
+            {
+                Vector3 flippedPosition = childTransforms[i].localPosition;
+                flippedPosition.x = -flippedPosition.x;
+                childTransforms[i].localPosition = flippedPosition;
+            }
+        }
+    }
+
+
 }
 
 
