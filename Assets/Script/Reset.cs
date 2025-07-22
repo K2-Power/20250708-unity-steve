@@ -7,7 +7,7 @@ public class Reset : MonoBehaviour
     void Update()
     {
         // 「R」キーが押されたらリセット
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown("joystick button 3"))
         {
             ResetGame(); // リセット関数を呼び出す
         }

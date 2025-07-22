@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public int CloneCount = 0;
     private Rigidbody2D rb;
     private bool isGrounded;
+    private float ShakingSpeed = 0.0f;
     public GameObject player2Prefab; // Player2のプレハブを指定
     public static Player instance;
 
@@ -26,6 +27,7 @@ public class Player : MonoBehaviour
 
         void Update()
         {
+        //Gamepad.current?.SetMotorSpeeds(2.0f, 2.0f);
         float hori = Input.GetAxis("Horizontal");
         float vert = Input.GetAxis("Vertical");
         // 左右移動（A：左, D：右）
