@@ -68,7 +68,7 @@ public class Player : MonoBehaviour
         }
 
         // 右クリック（マウス右ボタン）で生成
-        if (Input.GetKeyDown("joystick button 5")) // 0=左, 1=右
+        if (Input.GetKeyDown("joystick button 2")) // 0=左, 1=右
         {
             if (CloneCount > 0)
             {

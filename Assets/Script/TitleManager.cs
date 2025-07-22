@@ -5,7 +5,7 @@ public class TitleManager : MonoBehaviour
 {
     void Update()
     {
-        if(Input.GetKeyDown("joystick button 5"))
+        if(Input.GetKeyDown("joystick button 2"))
         {
             SceneManager.LoadScene("GameScene1");
         }
