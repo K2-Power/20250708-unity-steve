@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
@@ -50,7 +51,24 @@ public class Player : MonoBehaviour
         // 右クリック（マウス右ボタン）で生成
         if (Input.GetMouseButtonDown(1)) // 0=左, 1=右
         {
-            if (CloneCount <= 0)
+            if (CloneCount > 0)
+            {
+                if (player2Prefab != null)
+                {
+                    CloneCount--;
+                    Instantiate(player2Prefab, transform.position, Quaternion.identity);
+                }
+                else
+                {
+                    Debug.LogWarning("Player2プレハブが設定されていません！");
+                }
+            }
+        }
+
+        // 右クリック（マウス右ボタン）で生成
+        if (Input.GetKeyDown("joystick button 5")) // 0=左, 1=右
+        {
+            if (CloneCount > 0)
             {
                 if (player2Prefab != null)
                 {
