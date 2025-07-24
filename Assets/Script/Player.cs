@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
 
         void Update()
         {
-        //Gamepad.current?.SetMotorSpeeds(2.0f, 2.0f);
+        Gamepad.current?.SetMotorSpeeds(2.0f, 2.0f);
         float horizontal = Input.GetAxis("Horizontal");
         float vert = Input.GetAxis("Vertical");
         // 左右移動（A：左, D：右）
@@ -112,35 +112,52 @@ public class Player : MonoBehaviour
             ResetText.SetActive(true);
             Destroy(gameObject); // playerを壊す
         }
+        if (other.CompareTag("Ground"))
+        {
+            isGrounded = true;
+        }
     }
 
     // Groundに触れている間
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.collider.CompareTag("Ground"))
-        {
-            
-            isGrounded = true;
-        }
-        else if (collision.collider.CompareTag("Button")) 
+        if (collision.CompareTag("Ground"))
         {
             isGrounded = true;
         }
     }
 
     // Groundから離れたとき
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.collider.CompareTag("Ground"))
-        {
-           
-            isGrounded = false;
-        }
-        else if (collision.collider.CompareTag("Button"))
+        if (collision.CompareTag("Ground"))
         {
             isGrounded = false;
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Button"))
+        {
+            isGrounded = true;
+        }
+    }    
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Button"))
+        {
+            isGrounded = true;
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Button"))
+        {
+            isGrounded = false;
+        }
+    }
+
 
     void StoreOriginalChildPositions()
     {
@@ -162,8 +179,11 @@ public class Player : MonoBehaviour
             if (childTransforms[i] != null)
             {
                 Vector3 flippedPosition = childTransforms[i].localPosition;
+                Quaternion flippedRotation = childTransforms[i].rotation;
+                flippedRotation.z = -flippedRotation.z;
                 flippedPosition.x = -flippedPosition.x;
                 childTransforms[i].localPosition = flippedPosition;
+                childTransforms[i].rotation = flippedRotation;
             }
         }
     }
