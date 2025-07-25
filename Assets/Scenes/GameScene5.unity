@@ -2202,7 +2202,7 @@ GameObject:
   - component: {fileID: 1218355836}
   - component: {fileID: 1218355835}
   m_Layer: 0
-  m_Name: Dead (1)
+  m_Name: Dead
   m_TagString: Dead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2237,7 +2237,7 @@ MonoBehaviour:
     direction: {x: 0, y: 0, z: 0}
     speed: 0
   showDebugInfo: 1
-  showPath: 0
+  showPath: 1
 --- !u!50 &1218355836
 Rigidbody2D:
   serializedVersion: 5
@@ -4109,7 +4109,7 @@ MonoBehaviour:
     direction: {x: 0, y: 0, z: 0}
     speed: 0
   showDebugInfo: 1
-  showPath: 0
+  showPath: 1
 --- !u!50 &1839727651
 Rigidbody2D:
   serializedVersion: 5

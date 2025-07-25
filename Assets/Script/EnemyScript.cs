@@ -275,6 +275,13 @@ public class EnemyScript : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("ego"))
+        {
+            SetMovementEnabled(false);
+        }
+    }
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("ego"))
