@@ -9,5 +9,9 @@ public class TitleManager : MonoBehaviour
         {
             SceneManager.LoadScene("GameScene1");
         }
+        else if (Input.GetMouseButtonDown(1))
+        {
+            SceneManager.LoadScene("GameScene1");
+        }
     }
 }

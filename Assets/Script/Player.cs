@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
 
         void Update()
         {
-        Gamepad.current?.SetMotorSpeeds(2.0f, 2.0f);
+        //Gamepad.current?.SetMotorSpeeds(2.0f, 2.0f);
         float horizontal = Input.GetAxis("Horizontal");
         float vert = Input.GetAxis("Vertical");
         // 左右移動（A：左, D：右）
@@ -101,7 +101,13 @@ public class Player : MonoBehaviour
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             }
+        else if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
+
+
+    }
         
 
 
