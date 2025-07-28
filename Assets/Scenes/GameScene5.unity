@@ -5151,7 +5151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df05baa95688fec40a62fb09b1737fe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: TitleScene
+  sceneName: ClearScene
 --- !u!212 &2135578804
 SpriteRenderer:
   m_ObjectHideFlags: 0
