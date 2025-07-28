@@ -22,6 +22,10 @@ public class Reset : MonoBehaviour
         {
             ResetGame(); // リセット関数を呼び出す
         }
+        else if (Input.GetKeyDown(KeyCode.R))
+        {
+            ResetGame();
+        }
     }
 
     // ゲームのリセット処理（シーンの再読み込み）
