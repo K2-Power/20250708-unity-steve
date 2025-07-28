@@ -7,11 +7,11 @@ public class TitleManager : MonoBehaviour
     {
         if(Input.GetKeyDown("joystick button 2"))
         {
-            SceneManager.LoadScene("GameScene1");
+            SceneManager.LoadScene("TutorialScene");
         }
         else if (Input.GetMouseButtonDown(1))
         {
-            SceneManager.LoadScene("GameScene1");
+            SceneManager.LoadScene("TutorialScene");
         }
     }
 }

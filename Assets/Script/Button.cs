@@ -3,9 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class Button : MonoBehaviour
 {
-    
-    public static Button instance;
-    
+    public static Button instance;   
 
     // Dead‚ÉG‚ê‚Ä‚¢‚é‚©‚Ç‚¤‚©‚Ìó‘Ô
     public bool isTouchingDead { get; private set; } = false;
@@ -44,7 +42,7 @@ public class Button : MonoBehaviour
             bool isMoving = EnemyScript.instance.IsMoving();
             if (!isMoving)
             {
-                Debug.Log("‚Ó‚ç‚“‚ˆ‚‹‚Š‚Ó‚¥‚µ‚¤‚†‚†‚ˆ‚“");
+                Debug.Log("Enemy‚Ì“®‚«‚ª~‚Ü‚è‚Ü‚µ‚½!");
                 isTouchingDead = true;
             }
         }
