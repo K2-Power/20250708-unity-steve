@@ -804,7 +804,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4004578929006101724, guid: bfad233ae002add408d6568b4ef438d0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.3
+      value: 1.12
       objectReference: {fileID: 0}
     - target: {fileID: 4004578929006101724, guid: bfad233ae002add408d6568b4ef438d0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1189,6 +1189,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df05baa95688fec40a62fb09b1737fe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameobject: {fileID: 0}
+  gameobject2: {fileID: 0}
   sceneName: GameScene4
 --- !u!50 &1409382933
 Rigidbody2D:
@@ -1642,11 +1644,11 @@ PrefabInstance:
       objectReference: {fileID: 292710378}
     - target: {fileID: 7819239713194448593, guid: 869033579e3878e4e8b66ea903829eaf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.41
+      value: -7.21
       objectReference: {fileID: 0}
     - target: {fileID: 7819239713194448593, guid: 869033579e3878e4e8b66ea903829eaf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.3
+      value: -2.01
       objectReference: {fileID: 0}
     - target: {fileID: 7819239713194448593, guid: 869033579e3878e4e8b66ea903829eaf, type: 3}
       propertyPath: m_LocalPosition.z
