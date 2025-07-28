@@ -2236,8 +2236,8 @@ MonoBehaviour:
   - targetPosition: {x: -8.2, y: -0.67, z: 0}
     direction: {x: 0, y: 0, z: 0}
     speed: 0
-  showDebugInfo: 1
-  showPath: 1
+  showDebugInfo: 0
+  showPath: 0
 --- !u!50 &1218355836
 Rigidbody2D:
   serializedVersion: 5
@@ -4108,8 +4108,8 @@ MonoBehaviour:
   - targetPosition: {x: 8.37, y: 1.6, z: 0}
     direction: {x: 0, y: 0, z: 0}
     speed: 0
-  showDebugInfo: 1
-  showPath: 1
+  showDebugInfo: 0
+  showPath: 0
 --- !u!50 &1839727651
 Rigidbody2D:
   serializedVersion: 5
@@ -5244,7 +5244,7 @@ PrefabInstance:
       objectReference: {fileID: 1251840501}
     - target: {fileID: 6651081191217742659, guid: 869033579e3878e4e8b66ea903829eaf, type: 3}
       propertyPath: jumpForce
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6651081191217742659, guid: 869033579e3878e4e8b66ea903829eaf, type: 3}
       propertyPath: CloneCount

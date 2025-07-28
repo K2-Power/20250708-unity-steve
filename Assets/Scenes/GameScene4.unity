@@ -2845,8 +2845,8 @@ MonoBehaviour:
   - targetPosition: {x: -4.03, y: -0.22, z: 0}
     direction: {x: 0, y: 0, z: 0}
     speed: 0
-  showDebugInfo: 1
-  showPath: 1
+  showDebugInfo: 0
+  showPath: 0
 --- !u!1001 &4901063776174299756
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2869,7 +2869,7 @@ PrefabInstance:
       objectReference: {fileID: 1251840501}
     - target: {fileID: 6651081191217742659, guid: 869033579e3878e4e8b66ea903829eaf, type: 3}
       propertyPath: jumpForce
-      value: 8
+      value: 9.5
       objectReference: {fileID: 0}
     - target: {fileID: 6651081191217742659, guid: 869033579e3878e4e8b66ea903829eaf, type: 3}
       propertyPath: CloneCount

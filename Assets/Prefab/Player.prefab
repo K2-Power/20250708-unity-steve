@@ -144,7 +144,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 1.5
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -169,16 +169,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  jumpForce: 7
+  jumpForce: 9
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
   groundCheck: {fileID: 0}
   MainPlayer: {fileID: 0}
   ClonePlayer: {fileID: 0}
-  ShotPoint: {fileID: 7173802270073319719}
   CloneCount: 0
   player2Prefab: {fileID: 735191304903099735, guid: 322965246c1cfb44e94e78ce589209c9, type: 3}
+  ShotPoint: {fileID: 7173802270073319719}
+  ResetText: {fileID: 0}
+  autoFlipChildren: 1
 --- !u!1 &6263524065362885203
 GameObject:
   m_ObjectHideFlags: 0
