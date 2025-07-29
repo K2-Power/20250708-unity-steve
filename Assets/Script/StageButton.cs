@@ -9,6 +9,7 @@ public class StageButton : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             Destroy(ButtonObject);
+            Destroy(gameObject);
         }
     }
 }
