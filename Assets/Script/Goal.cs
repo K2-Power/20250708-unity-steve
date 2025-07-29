@@ -5,8 +5,6 @@ public class Goal : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
     private Color originalColor;
-    public GameObject gameobject;
-    public GameObject gameobject2;
     public string sceneName; // インスペクターで指定するシーン名（例："GameScene"）
     void Start()
     {
