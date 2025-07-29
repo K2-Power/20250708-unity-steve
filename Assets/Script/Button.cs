@@ -1,12 +1,15 @@
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Button : MonoBehaviour
 {
-    public static Button instance;   
+
+    public static Button instance;
+    private EnemyScript Enemyobj = null;
 
     // DeadÇ…êGÇÍÇƒÇ¢ÇÈÇ©Ç«Ç§Ç©ÇÃèÛë‘
-    public bool isTouchingDead { get; private set; } = false;
+    public bool isTouchingDead = false;
 
     void Start()
     {
@@ -20,7 +23,7 @@ public class Button : MonoBehaviour
             Vector3 localscale = gameObject.transform.localScale;
             localscale.x *= -1;
             transform.localScale = localscale;
-            
+            Enemyobj = other.gameObject.GetComponent<EnemyScript>();
         }
     }
 
@@ -32,6 +35,7 @@ public class Button : MonoBehaviour
             localscale.x *= -1;
             transform.localScale = localscale;
             isTouchingDead = false;
+            Enemyobj = null;
         }
     }
 
@@ -39,10 +43,10 @@ public class Button : MonoBehaviour
     {
         if (other.CompareTag("Dead"))
         {
-            bool isMoving = EnemyScript.instance.IsMoving();
+            bool isMoving = Enemyobj.IsMoving();
             if (!isMoving)
             {
-                Debug.Log("EnemyÇÃìÆÇ´Ç™é~Ç‹ÇËÇ‹ÇµÇΩ!");
+                Debug.Log("Ç”ÇÁÇìÇàÇãÇäÇ”Ç•ÇµÇ§ÇÜÇÜÇàÇì");
                 isTouchingDead = true;
             }
         }
