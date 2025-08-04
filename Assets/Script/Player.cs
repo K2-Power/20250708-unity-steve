@@ -38,8 +38,9 @@ public class Player : MonoBehaviour
         // 左右移動（A：左, D：右）
         if (Mathf.Abs(horizontal) > 0.1f)
         {
-            Vector3 movement = new Vector3(horizontal * moveSpeed * Time.deltaTime, 0, 0);
-            transform.Translate(movement);
+            Vector3 movement = new Vector3(horizontal * (moveSpeed * Time.deltaTime), 0, 0);
+            //transform.Translate(movement);
+            rb.linearVelocityX = movement.x;
 
             // 自動反転が有効な場合
             if (autoFlipChildren)
