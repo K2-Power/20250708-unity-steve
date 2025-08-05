@@ -27,11 +27,11 @@ public class Player : MonoBehaviour
         instance = this;
         rb = GetComponent<Rigidbody2D>();  // Rigidbody2Dを取得
         ResetText.SetActive(false);
-        
+
     }
 
-        void Update()
-        {
+    void Update()
+    {
         //Gamepad.current?.SetMotorSpeeds(2.0f, 2.0f);
         float horizontal = Input.GetAxis("Horizontal");
         float vert = Input.GetAxis("Vertical");
@@ -71,6 +71,7 @@ public class Player : MonoBehaviour
                 {
                     CloneCount--;
                     Instantiate(player2Prefab, ShotPoint.transform.position, Quaternion.identity);
+                    SoundManager.instance.PlaySE(0);
                 }
                 else
                 {
@@ -88,6 +89,7 @@ public class Player : MonoBehaviour
                 {
                     CloneCount--;
                     Instantiate(player2Prefab, ShotPoint.transform.position, Quaternion.identity);
+                    SoundManager.instance.PlaySE(0);
                 }
                 else
                 {
@@ -97,9 +99,9 @@ public class Player : MonoBehaviour
         }
         // ジャンプ（Spaceキー）
         if (Input.GetKeyDown("joystick button 0") && isGrounded)
-            {
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-            }
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        }
         else if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
@@ -107,7 +109,7 @@ public class Player : MonoBehaviour
 
 
     }
-        
+
 
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -151,7 +153,7 @@ public class Player : MonoBehaviour
         {
             isGrounded = true;
         }
-    }    
+    }
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Button"))
