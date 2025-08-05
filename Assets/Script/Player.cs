@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
         StoreOriginalChildPositions();
         instance = this;
         rb = GetComponent<Rigidbody2D>();  // Rigidbody2Dを取得
-        ResetText.SetActive(false);
+        
 
     }
 
@@ -40,7 +40,8 @@ public class Player : MonoBehaviour
         {
             Vector3 movement = new Vector3(horizontal * (moveSpeed * Time.deltaTime), 0, 0);
             //transform.Translate(movement);
-            rb.linearVelocityX = movement.x;
+            //rb.linearVelocityX = movement.x;
+            rb.linearVelocityX = horizontal * moveSpeed;
 
             // 自動反転が有効な場合
             if (autoFlipChildren)
