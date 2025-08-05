@@ -1,20 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class CloneCountScript : MonoBehaviour
 {
-    public TextMeshProUGUI CountText;
+    private Image image;
+    public Sprite[] numbers;
     void Start()
     {
-        
+        image = GetComponent<Image>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        CountText.text = Player.instance.CloneCount.ToString();
+        image.sprite = numbers[Player.instance.CloneCount];
     }
 }
