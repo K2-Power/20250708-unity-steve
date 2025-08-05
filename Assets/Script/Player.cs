@@ -147,6 +147,10 @@ public class Player : MonoBehaviour
         {
             isGrounded = true;
         }
+        else if (collision.collider.CompareTag("ego"))
+        {
+            isGrounded = true;
+        }
     }    
     private void OnCollisionStay2D(Collision2D collision)
     {
@@ -154,10 +158,18 @@ public class Player : MonoBehaviour
         {
             isGrounded = true;
         }
+        else if (collision.collider.CompareTag("ego"))
+        {
+            isGrounded = true;
+        }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Button"))
+        {
+            isGrounded = false;
+        }
+        else if (collision.collider.CompareTag("ego"))
         {
             isGrounded = false;
         }

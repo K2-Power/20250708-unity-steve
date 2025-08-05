@@ -165,8 +165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58850141b9097d74397d6eea696bb3ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 5
+  lifetime: 6.5
   spriteRenderer: {fileID: 0}
   blinkSpeed: 20
   minAlpha: 0.5
   maxAlpha: 1
+  blinkStartTime: 2
