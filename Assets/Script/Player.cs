@@ -1,3 +1,4 @@
+using UnityEditor.Media;
 using UnityEngine;
 
 
@@ -111,41 +112,20 @@ public class Player : MonoBehaviour
 
     }
 
-
-
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.CompareTag("Dead"))
+        if (collision.CompareTag("Dead")) 
         {
-            ResetText.SetActive(true);
-            Destroy(gameObject); // playerを壊す
-        }
-        if (other.CompareTag("Ground"))
-        {
-            isGrounded = true;
-        }
-    }
-
-    // Groundに触れている間
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Ground"))
-        {
-            isGrounded = true;
-        }
-    }
-
-    // Groundから離れたとき
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Ground"))
-        {
-            isGrounded = false;
+           Destroy(gameObject);
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.collider.CompareTag("Ground"))
+        {
+            isGrounded = true;
+        }
         if (collision.collider.CompareTag("Button"))
         {
             isGrounded = true;
@@ -157,6 +137,10 @@ public class Player : MonoBehaviour
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
+        if (collision.collider.CompareTag("Ground"))
+        {
+            isGrounded = true;
+        }
         if (collision.collider.CompareTag("Button"))
         {
             isGrounded = true;
@@ -168,6 +152,10 @@ public class Player : MonoBehaviour
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
+        if (collision.collider.CompareTag("Ground"))
+        {
+            isGrounded = false;
+        }
         if (collision.collider.CompareTag("Button"))
         {
             isGrounded = false;

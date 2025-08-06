@@ -1235,6 +1235,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfad233ae002add408d6568b4ef438d0, type: 3}
+--- !u!1 &1123541333 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4768942350586038234, guid: 869033579e3878e4e8b66ea903829eaf, type: 3}
+  m_PrefabInstance: {fileID: 6776310672540301227}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1177735293 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5903972064672760322, guid: 97bed6014af3b2841b3ecc55a0b98cdf, type: 3}
@@ -1573,7 +1578,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.05, y: 1}
+  m_Size: {x: 1.05, y: 0.86}
   m_EdgeRadius: 0
 --- !u!212 &1530303370
 SpriteRenderer:
@@ -1660,11 +1665,11 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.55}
+  m_Offset: {x: 0, y: 0.51}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1674,7 +1679,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 0.05}
+  m_Size: {x: 1.01, y: 0.03}
   m_EdgeRadius: 0
 --- !u!1001 &2863636810860672665
 PrefabInstance:
@@ -1793,6 +1798,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ResetObj
       objectReference: {fileID: 0}
+    - target: {fileID: 8718184644410469397, guid: b1544048132b39e469a10f498f1f8d7d, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1123541333}
     - target: {fileID: 8718184644410469397, guid: b1544048132b39e469a10f498f1f8d7d, type: 3}
       propertyPath: ResetText
       value: 

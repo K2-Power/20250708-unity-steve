@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement; // シーンの管理に必要
 public class Reset : MonoBehaviour
 {
     public GameObject ResetText;
+    public GameObject player;
 
     void Start()
     {
@@ -13,6 +14,10 @@ public class Reset : MonoBehaviour
     // Update関数は毎フレーム呼ばれる
     void Update()
     {
+        if(player == null)
+        {
+            ResetText.SetActive(true);
+        }
         if (Player.instance.CloneCount <= 0)
         {
             ResetText.SetActive(true);
