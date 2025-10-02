@@ -8,6 +8,7 @@ TagManager:
   - Button
   - Dead
   - ego
+  - Lift
   layers:
   - Default
   - TransparentFX

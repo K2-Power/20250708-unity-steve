@@ -2,13 +2,13 @@ using UnityEngine;
 
 
 [System.Serializable]
-public class EnemyMovementPoint
+public class LiftMovementPoint
 {
     public Vector3 targetPosition;
     public Vector3 direction;
     public float speed = 3f;
 
-    public EnemyMovementPoint(Vector3 pos, Vector3 dir, float spd = 3f)
+    public LiftMovementPoint(Vector3 pos, Vector3 dir, float spd = 3f)
     {
         targetPosition = pos;
         direction = dir.normalized;
@@ -16,15 +16,16 @@ public class EnemyMovementPoint
     }
 }
 
-public class EnemyScript : MonoBehaviour
+public class LiftScript : MonoBehaviour
 {
     [Header("移動設定")]
     public float defaultSpeed = 3f;
     public bool loopMovement = true; // 移動パターンをループするか
     public bool useLocalPosition = false; // ローカル座標を使用するか
+    public bool sticky = false; // 上に乗ったプレイヤーが付いてくるか
 
     [Header("移動ポイント")]
-    public EnemyMovementPoint[] movementPoints;
+    public LiftMovementPoint[] liftmovementpoint;
 
     [Header("デバッグ情報")]
     public bool showDebugInfo = true;
@@ -35,8 +36,9 @@ public class EnemyScript : MonoBehaviour
     private bool isMoving = true;
     private Vector3 currentDirection;
     private float currentSpeed;
-    public static EnemyScript instance;
+    public static LiftScript instance;
 
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
 
@@ -44,13 +46,13 @@ public class EnemyScript : MonoBehaviour
         startPosition = transform.position;
 
         // 移動ポイントが設定されていない場合、デフォルトのパターンを作成
-        if (movementPoints == null || movementPoints.Length == 0)
+        if (liftmovementpoint == null || liftmovementpoint.Length == 0)
         {
             CreateDefaultMovementPoints();
         }
 
         // 最初の移動を開始
-        if (movementPoints.Length > 0)
+        if (liftmovementpoint.Length > 0)
         {
             SetNextTarget();
         }
@@ -58,7 +60,7 @@ public class EnemyScript : MonoBehaviour
 
     void Update()
     {
-        if (isMoving && movementPoints.Length > 0)
+        if (isMoving && liftmovementpoint.Length > 0)
         {
             MoveTowardsTarget();
         }
@@ -66,7 +68,7 @@ public class EnemyScript : MonoBehaviour
 
     void MoveTowardsTarget()
     {
-        EnemyMovementPoint currentPoint = movementPoints[currentPointIndex];
+        LiftMovementPoint currentPoint = liftmovementpoint[currentPointIndex];
         Vector3 targetPos = useLocalPosition ?
             startPosition + currentPoint.targetPosition :
             currentPoint.targetPosition;
@@ -101,7 +103,7 @@ public class EnemyScript : MonoBehaviour
         // 次の移動ポイントに移動
         currentPointIndex++;
 
-        if (currentPointIndex >= movementPoints.Length)
+        if (currentPointIndex >= liftmovementpoint.Length)
         {
             if (loopMovement)
             {
@@ -123,9 +125,9 @@ public class EnemyScript : MonoBehaviour
 
     void SetNextTarget()
     {
-        if (currentPointIndex < movementPoints.Length)
+        if (currentPointIndex < liftmovementpoint.Length)
         {
-            EnemyMovementPoint currentPoint = movementPoints[currentPointIndex];
+            LiftMovementPoint currentPoint = liftmovementpoint[currentPointIndex];
             currentDirection = currentPoint.direction;
             currentSpeed = currentPoint.speed > 0 ? currentPoint.speed : defaultSpeed;
 
@@ -140,23 +142,23 @@ public class EnemyScript : MonoBehaviour
     {
         // デフォルトの移動パターン（正方形）
         Vector3 basePos = transform.position;
-        movementPoints = new EnemyMovementPoint[]
+        liftmovementpoint = new LiftMovementPoint[]
         {
-            new EnemyMovementPoint(basePos + Vector3.forward * 5f, Vector3.forward, defaultSpeed),
-            new EnemyMovementPoint(basePos + Vector3.forward * 5f + Vector3.right * 5f, Vector3.right, defaultSpeed),
-            new EnemyMovementPoint(basePos + Vector3.right * 5f, Vector3.back, defaultSpeed),
-            new EnemyMovementPoint(basePos, Vector3.left, defaultSpeed)
+            new LiftMovementPoint(basePos + Vector3.forward * 5f, Vector3.forward, defaultSpeed),
+            new LiftMovementPoint(basePos + Vector3.forward * 5f + Vector3.right * 5f, Vector3.right, defaultSpeed),
+            new LiftMovementPoint(basePos + Vector3.right * 5f, Vector3.back, defaultSpeed),
+            new LiftMovementPoint(basePos, Vector3.left, defaultSpeed)
         };
     }
 
     // 移動ポイントを動的に設定するメソッド
-    public void SetMovementPoints(EnemyMovementPoint[] newPoints)
+    public void SetMovementPoints(LiftMovementPoint[] newPoints)
     {
-        movementPoints = newPoints;
+        liftmovementpoint = newPoints;
         currentPointIndex = 0;
         isMoving = true;
 
-        if (movementPoints.Length > 0)
+        if (liftmovementpoint.Length > 0)
         {
             SetNextTarget();
         }
@@ -165,13 +167,13 @@ public class EnemyScript : MonoBehaviour
     // 移動ポイントを追加するメソッド
     public void AddMovementPoint(Vector3 position, Vector3 direction, float speed = 0f)
     {
-        EnemyMovementPoint[] newPoints = new EnemyMovementPoint[movementPoints.Length + 1];
-        for (int i = 0; i < movementPoints.Length; i++)
+        LiftMovementPoint[] newPoints = new LiftMovementPoint[liftmovementpoint.Length + 1];
+        for (int i = 0; i < liftmovementpoint.Length; i++)
         {
-            newPoints[i] = movementPoints[i];
+            newPoints[i] = liftmovementpoint[i];
         }
-        newPoints[movementPoints.Length] = new  EnemyMovementPoint(position, direction, speed > 0 ? speed : defaultSpeed);
-        movementPoints = newPoints;
+        newPoints[liftmovementpoint.Length] = new LiftMovementPoint(position, direction, speed > 0 ? speed : defaultSpeed);
+        liftmovementpoint = newPoints;
     }
 
     // 移動を一時停止/再開するメソッド
@@ -183,7 +185,7 @@ public class EnemyScript : MonoBehaviour
     // 特定のポイントから移動を開始
     public void StartFromPoint(int pointIndex)
     {
-        if (pointIndex >= 0 && pointIndex < movementPoints.Length)
+        if (pointIndex >= 0 && pointIndex < liftmovementpoint.Length)
         {
             currentPointIndex = pointIndex;
             isMoving = true;
@@ -210,14 +212,14 @@ public class EnemyScript : MonoBehaviour
 
         Vector3 basePos = Application.isPlaying ? startPosition : transform.position;
 
-        if (movementPoints != null && movementPoints.Length > 0)
+        if (liftmovementpoint != null && liftmovementpoint.Length > 0)
         {
             // 移動ポイントを描画
-            for (int i = 0; i < movementPoints.Length; i++)
+            for (int i = 0; i < liftmovementpoint.Length; i++)
             {
                 Vector3 pointPos = useLocalPosition ?
-                    basePos + movementPoints[i].targetPosition :
-                    movementPoints[i].targetPosition;
+                    basePos + liftmovementpoint[i].targetPosition :
+                    liftmovementpoint[i].targetPosition;
 
                 // 現在の目標ポイントを赤で、それ以外を青で表示
                 Gizmos.color = (i == currentPointIndex) ? Color.red : Color.blue;
@@ -228,27 +230,27 @@ public class EnemyScript : MonoBehaviour
 
                 // 方向を矢印で表示
                 Gizmos.color = Color.yellow;
-                Gizmos.DrawRay(pointPos, movementPoints[i].direction * 2f);
+                Gizmos.DrawRay(pointPos, liftmovementpoint[i].direction * 2f);
             }
 
             // パスを線で描画
             if (showPath)
             {
                 Gizmos.color = Color.green;
-                for (int i = 0; i < movementPoints.Length; i++)
+                for (int i = 0; i < liftmovementpoint.Length; i++)
                 {
                     Vector3 currentPos = useLocalPosition ?
-                        basePos + movementPoints[i].targetPosition :
-                        movementPoints[i].targetPosition;
+                        basePos + liftmovementpoint[i].targetPosition :
+                        liftmovementpoint[i].targetPosition;
 
                     Vector3 nextPos;
-                    if (i == movementPoints.Length - 1)
+                    if (i == liftmovementpoint.Length - 1)
                     {
                         if (loopMovement)
                         {
                             nextPos = useLocalPosition ?
-                                basePos + movementPoints[0].targetPosition :
-                                movementPoints[0].targetPosition;
+                                basePos + liftmovementpoint[0].targetPosition :
+                                liftmovementpoint[0].targetPosition;
                         }
                         else
                         {
@@ -258,8 +260,8 @@ public class EnemyScript : MonoBehaviour
                     else
                     {
                         nextPos = useLocalPosition ?
-                            basePos + movementPoints[i + 1].targetPosition :
-                            movementPoints[i + 1].targetPosition;
+                            basePos + liftmovementpoint[i + 1].targetPosition :
+                            liftmovementpoint[i + 1].targetPosition;
                     }
 
                     Gizmos.DrawLine(currentPos, nextPos);
@@ -275,28 +277,37 @@ public class EnemyScript : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("ego"))
-        {
-            SetMovementEnabled(false);
-        }
-    }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.CompareTag("ego"))
-        {
-            SetMovementEnabled(false);
-        }
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("ego"))
-        {
-            SetMovementEnabled(true);
-        }
-    }
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.collider.CompareTag("Player"))
+    //    {
+
+    //    }
+    //}
+
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.CompareTag("Player"))
+    //    {
+    //        Debug.Log("aaa");
+    //    }
+    //}
+    //private void OnTriggerStay2D(Collider2D collision)
+    //{
+    //    if (collision.CompareTag("ego"))
+    //    {
+    //        SetMovementEnabled(false);
+    //    }
+    //}
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    if (collision.CompareTag("ego"))
+    //    {
+    //        SetMovementEnabled(true);
+    //    }
+    //}
 
 
 
 }
+

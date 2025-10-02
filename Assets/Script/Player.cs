@@ -1,3 +1,4 @@
+using System;
 using UnityEditor.Media;
 using UnityEngine;
 
@@ -17,6 +18,7 @@ public class Player : MonoBehaviour
     public GameObject ShotPoint;
     public GameObject ResetText;
     public static Player instance;
+    public GameObject LiftObject;
     public bool autoFlipChildren = true;
     private bool facingRight = true;
     private Transform[] childTransforms;
@@ -27,6 +29,8 @@ public class Player : MonoBehaviour
         StoreOriginalChildPositions();
         instance = this;
         rb = GetComponent<Rigidbody2D>();  // Rigidbody2Dを取得
+
+
     }
 
     void Update()
@@ -34,25 +38,28 @@ public class Player : MonoBehaviour
         //Gamepad.current?.SetMotorSpeeds(2.0f, 2.0f);
         float horizontal = Input.GetAxis("Horizontal");
         float vert = Input.GetAxis("Vertical");
+        Debug.Log(horizontal);
         // 左右移動（A：左, D：右）
-        if (Mathf.Abs(horizontal) > 0.1f)
+        if (Mathf.Abs(horizontal) > 0.01f)
         {
             Vector3 movement = new Vector3(horizontal * (moveSpeed * Time.deltaTime), 0, 0);
             //transform.Translate(movement);
             //rb.linearVelocityX = movement.x;
+            //rb.linearVelocityX = horizontal * (moveSpeed * Time.deltaTime); 
             rb.linearVelocityX = horizontal * moveSpeed;
+            //rb.linearVelocity = movement;
 
             // 自動反転が有効な場合
             if (autoFlipChildren)
             {
                 // 右向きから左向きに変わった時
-                if (horizontal < 0 && facingRight)
+                if (horizontal < 0.2f && facingRight)
                 {
                     FlipChildren();
                     facingRight = false;
                 }
                 // 左向きから右向きに変わった時
-                else if (horizontal > 0 && !facingRight)
+                else if (horizontal > 0.2f && !facingRight)
                 {
                     FlipChildren();
                     facingRight = true;
@@ -63,7 +70,7 @@ public class Player : MonoBehaviour
 
 
         // 右クリック（マウス右ボタン）で生成
-        if (Input.GetMouseButtonDown(1)|| Input.GetKeyDown("joystick button 2")) // 0=左, 1=右
+        if (Input.GetMouseButtonDown(1)) // 0=左, 1=右
         {
             if (CloneCount > 0)
             {
@@ -80,18 +87,80 @@ public class Player : MonoBehaviour
             }
         }
 
+        // 右クリック（マウス右ボタン）で生成
+        if (Input.GetKeyDown("joystick button 2")) // 0=左, 1=右
+        {
+            if (CloneCount > 0)
+            {
+                if (player2Prefab != null)
+                {
+                    CloneCount--;
+                    Instantiate(player2Prefab, ShotPoint.transform.position, Quaternion.identity);
+                    SoundManager.instance.PlaySE(0);
+                }
+                else
+                {
+                    Debug.LogWarning("Player2プレハブが設定されていません！");
+                }
+            }
+        }
         // ジャンプ（Spaceキー）
-        if (Input.GetKeyDown("joystick button 0") && isGrounded || Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetKeyDown("joystick button 0") && isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
+        else if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        }
+
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Dead")) 
+        if (collision.CompareTag("Dead"))
         {
-           Destroy(gameObject);
+            Destroy(gameObject);
+        }
+        if (collision.CompareTag("Lift"))
+        {
+            isGrounded = true;
+            if (LiftObject != null)
+            {
+                if (Input.GetAxis("Horizontal") == 0.0f)
+                {
+                    rb.linearVelocityX = 0.0f;
+                }
+                transform.SetParent(LiftObject.transform);
+            }
+        }
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Lift"))
+        {
+            isGrounded = true;
+            if (LiftObject != null)
+            {
+                if (Input.GetAxis("Horizontal") == 0.0f)
+                {
+                    rb.linearVelocityX = 0.0f;
+                }
+                transform.SetParent(LiftObject.transform);
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Lift"))
+        {
+            isGrounded = false;
+            if (LiftObject != null)
+            {
+                transform.SetParent(null);
+            }
         }
     }
 
