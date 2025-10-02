@@ -15,13 +15,9 @@ public class TitleManager : MonoBehaviour
     }
     void Update()
     {
-        if(Input.GetKeyDown("joystick button 2"))
+        if(Input.GetKeyDown("joystick button 2")|| Input.GetMouseButtonDown(1))
         {
             
-            counter++;
-        }
-        else if (Input.GetMouseButtonDown(1))
-        {
             counter++;
         }
         switch (counter)

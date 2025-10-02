@@ -5,11 +5,7 @@ public class Clear : MonoBehaviour
 {
     void Update()
     {
-        if (Input.GetKeyDown("joystick button 2"))
-        {
-            SceneManager.LoadScene("TitleScene");
-        }
-        else if (Input.GetMouseButtonDown(1))
+        if (Input.GetKeyDown("joystick button 2")|| Input.GetMouseButtonDown(1))
         {
             SceneManager.LoadScene("TitleScene");
         }
