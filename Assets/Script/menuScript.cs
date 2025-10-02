@@ -1,6 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem.Controls;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
@@ -40,5 +41,16 @@ public class menuScript : MonoBehaviour
         menuimage.SetActive(menuopen);
         menubutton.SetActive(menuopen);
         menubutton1.SetActive(menuopen);
+    }
+    public void BackGameScene()
+    {
+        Time.timeScale = 1.0f;
+        menuopen = false;
+    }
+    public void StringArgFunction(string s)
+    {
+        Time.timeScale = 1.0f;
+        menuopen = false;
+        SceneManager.LoadScene(s);
     }
 }
