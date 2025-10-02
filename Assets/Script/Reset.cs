@@ -23,13 +23,9 @@ public class Reset : MonoBehaviour
             ResetText.SetActive(true);
         }
         // 「R」キーが押されたらリセット
-        if (Input.GetKeyDown("joystick button 3"))
+        if (Input.GetKeyDown("joystick button 3")|| Input.GetKeyDown(KeyCode.R))
         {
             ResetGame(); // リセット関数を呼び出す
-        }
-        else if (Input.GetKeyDown(KeyCode.R))
-        {
-            ResetGame();
         }
     }
 

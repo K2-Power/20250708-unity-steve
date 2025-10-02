@@ -27,8 +27,6 @@ public class Player : MonoBehaviour
         StoreOriginalChildPositions();
         instance = this;
         rb = GetComponent<Rigidbody2D>();  // Rigidbody2Dを取得
-        
-
     }
 
     void Update()
@@ -65,7 +63,7 @@ public class Player : MonoBehaviour
 
 
         // 右クリック（マウス右ボタン）で生成
-        if (Input.GetMouseButtonDown(1)) // 0=左, 1=右
+        if (Input.GetMouseButtonDown(1)|| Input.GetKeyDown("joystick button 2")) // 0=左, 1=右
         {
             if (CloneCount > 0)
             {
@@ -82,34 +80,11 @@ public class Player : MonoBehaviour
             }
         }
 
-        // 右クリック（マウス右ボタン）で生成
-        if (Input.GetKeyDown("joystick button 2")) // 0=左, 1=右
-        {
-            if (CloneCount > 0)
-            {
-                if (player2Prefab != null)
-                {
-                    CloneCount--;
-                    Instantiate(player2Prefab, ShotPoint.transform.position, Quaternion.identity);
-                    SoundManager.instance.PlaySE(0);
-                }
-                else
-                {
-                    Debug.LogWarning("Player2プレハブが設定されていません！");
-                }
-            }
-        }
         // ジャンプ（Spaceキー）
-        if (Input.GetKeyDown("joystick button 0") && isGrounded)
+        if (Input.GetKeyDown("joystick button 0") && isGrounded || Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
-        else if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-        }
-
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
