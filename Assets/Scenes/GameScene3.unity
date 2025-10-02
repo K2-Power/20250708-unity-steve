@@ -353,6 +353,14 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6651081191217742659, guid: 869033579e3878e4e8b66ea903829eaf, type: 3}
+      propertyPath: jumpForce
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6651081191217742659, guid: 869033579e3878e4e8b66ea903829eaf, type: 3}
+      propertyPath: moveSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6651081191217742659, guid: 869033579e3878e4e8b66ea903829eaf, type: 3}
       propertyPath: MainPlayer
       value: 
       objectReference: {fileID: 4768942350586038234, guid: 869033579e3878e4e8b66ea903829eaf, type: 3}
@@ -1103,6 +1111,10 @@ PrefabInstance:
       propertyPath: ButtonObject
       value: 
       objectReference: {fileID: 430688520}
+    - target: {fileID: 5844176409623922781, guid: 8b941d7881999fb4d929a8bd380984b9, type: 3}
+      propertyPath: 'ButtonObject.Array.data[0]'
+      value: 
+      objectReference: {fileID: 430688520}
     - target: {fileID: 5975365887732918345, guid: 8b941d7881999fb4d929a8bd380984b9, type: 3}
       propertyPath: m_Name
       value: StageButton
@@ -1167,7 +1179,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 74b856eedacb8804cb42e4cdfdf112ea, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

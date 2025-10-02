@@ -2076,7 +2076,11 @@ PrefabInstance:
       objectReference: {fileID: 1178810011}
     - target: {fileID: 6651081191217742659, guid: 869033579e3878e4e8b66ea903829eaf, type: 3}
       propertyPath: jumpForce
-      value: 9.5
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6651081191217742659, guid: 869033579e3878e4e8b66ea903829eaf, type: 3}
+      propertyPath: moveSpeed
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6651081191217742659, guid: 869033579e3878e4e8b66ea903829eaf, type: 3}
       propertyPath: CloneCount
