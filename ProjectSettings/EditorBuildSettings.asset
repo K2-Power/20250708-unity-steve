@@ -30,6 +30,9 @@ EditorBuildSettings:
     path: Assets/Scenes/GameScene6.unity
     guid: 8b83d15660353094fa7e41f1a2a3d8fe
   - enabled: 1
+    path: Assets/Scenes/GameScene7.unity
+    guid: 453eec895f3414d4c8dd0e054bab884c
+  - enabled: 1
     path: Assets/Scenes/HORYU.unity
     guid: 2fae28c1b8c3648468e56c35a8d8bdb8
   - enabled: 1

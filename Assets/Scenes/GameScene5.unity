@@ -1257,7 +1257,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40e5b1f804a4f50499e4b19ac1ed6c42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ButtonObject: {fileID: 311108301}
+  ButtonObject:
+  - {fileID: 311108301}
 --- !u!50 &471020086
 Rigidbody2D:
   serializedVersion: 5
@@ -3423,7 +3424,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40e5b1f804a4f50499e4b19ac1ed6c42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ButtonObject: {fileID: 372659381}
+  ButtonObject:
+  - {fileID: 372659381}
 --- !u!1 &1908579254
 GameObject:
   m_ObjectHideFlags: 0

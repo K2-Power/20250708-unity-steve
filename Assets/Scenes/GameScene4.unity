@@ -1155,7 +1155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ButtonObject:
-  - {fileID: 0}
+  - {fileID: 311108301}
 --- !u!50 &471020086
 Rigidbody2D:
   serializedVersion: 5
@@ -3176,7 +3176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ButtonObject:
-  - {fileID: 0}
+  - {fileID: 372659381}
 --- !u!1 &1908579254
 GameObject:
   m_ObjectHideFlags: 0
