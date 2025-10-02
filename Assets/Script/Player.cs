@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
         //Gamepad.current?.SetMotorSpeeds(2.0f, 2.0f);
         float horizontal = Input.GetAxis("Horizontal");
         float vert = Input.GetAxis("Vertical");
-        Debug.Log(horizontal);
+        //Debug.Log(horizontal);
         // 左右移動（A：左, D：右）
         if (Mathf.Abs(horizontal) > 0.01f)
         {
@@ -53,16 +53,14 @@ public class Player : MonoBehaviour
             if (autoFlipChildren)
             {
                 // 右向きから左向きに変わった時
-                if (horizontal < 0.2f && facingRight)
+                if (horizontal < -0.2f)
                 {
-                    FlipChildren();
-                    facingRight = false;
+                    transform.rotation = Quaternion.Euler(0,180,0);
                 }
                 // 左向きから右向きに変わった時
-                else if (horizontal > 0.2f && !facingRight)
+                else if (horizontal > 0.2f)
                 {
-                    FlipChildren();
-                    facingRight = true;
+                    transform.rotation = Quaternion.Euler(0, 0, 0);                    
                 }
             }
         }
@@ -123,6 +121,10 @@ public class Player : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        if (collision.CompareTag("ego"))
+        {
+            isGrounded = true;
+        }
         if (collision.CompareTag("Lift"))
         {
             isGrounded = true;
@@ -138,6 +140,11 @@ public class Player : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
+
+        if (collision.CompareTag("ego"))
+        {
+            isGrounded = true;
+        }
         if (collision.CompareTag("Lift"))
         {
             isGrounded = true;
@@ -154,6 +161,10 @@ public class Player : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (collision.CompareTag("ego"))
+        {
+            isGrounded = false;
+        }
         if (collision.CompareTag("Lift"))
         {
             isGrounded = false;
@@ -174,10 +185,6 @@ public class Player : MonoBehaviour
         {
             isGrounded = true;
         }
-        else if (collision.collider.CompareTag("ego"))
-        {
-            isGrounded = true;
-        }
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
@@ -189,10 +196,6 @@ public class Player : MonoBehaviour
         {
             isGrounded = true;
         }
-        else if (collision.collider.CompareTag("ego"))
-        {
-            isGrounded = true;
-        }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
@@ -201,10 +204,6 @@ public class Player : MonoBehaviour
             isGrounded = false;
         }
         if (collision.collider.CompareTag("Button"))
-        {
-            isGrounded = false;
-        }
-        else if (collision.collider.CompareTag("ego"))
         {
             isGrounded = false;
         }
