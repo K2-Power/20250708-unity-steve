@@ -185,10 +185,14 @@ public class Player : MonoBehaviour
         {
             isGrounded = true;
         }
+        if (collision.gameObject.CompareTag("Lift"))
+        {
+            transform.SetParent(collision.transform);
+        }
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Ground"))
+        if (collision.collider.CompareTag("Ground") )
         {
             isGrounded = true;
         }
@@ -196,6 +200,7 @@ public class Player : MonoBehaviour
         {
             isGrounded = true;
         }
+
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
@@ -206,6 +211,10 @@ public class Player : MonoBehaviour
         if (collision.collider.CompareTag("Button"))
         {
             isGrounded = false;
+        }
+        if (collision.gameObject.CompareTag("Lift"))
+        {
+            transform.SetParent(null);
         }
     }
 
