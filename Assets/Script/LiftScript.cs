@@ -18,16 +18,16 @@ public class LiftMovementPoint
 
 public class LiftScript : MonoBehaviour
 {
-    [Header("ˆÚ“®İ’è")]
+    [Header("ï¿½Ú“ï¿½ï¿½İ’ï¿½")]
     public float defaultSpeed = 3f;
-    public bool loopMovement = true; // ˆÚ“®ƒpƒ^[ƒ“‚ğƒ‹[ƒv‚·‚é‚©
-    public bool useLocalPosition = false; // ƒ[ƒJƒ‹À•W‚ğg—p‚·‚é‚©
-    public bool sticky = false; // ã‚Éæ‚Á‚½ƒvƒŒƒCƒ„[‚ª•t‚¢‚Ä‚­‚é‚©
+    public bool loopMovement = true; // ï¿½Ú“ï¿½ï¿½pï¿½^ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½vï¿½ï¿½ï¿½é‚©
+    public bool useLocalPosition = false; // ï¿½ï¿½ï¿½[ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½gï¿½pï¿½ï¿½ï¿½é‚©
+    public bool sticky = false; // ï¿½ï¿½Éï¿½ï¿½ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½tï¿½ï¿½ï¿½Ä‚ï¿½ï¿½é‚©
 
-    [Header("ˆÚ“®ƒ|ƒCƒ“ƒg")]
+    [Header("ï¿½Ú“ï¿½ï¿½|ï¿½Cï¿½ï¿½ï¿½g")]
     public LiftMovementPoint[] liftmovementpoint;
 
-    [Header("ƒfƒoƒbƒOî•ñ")]
+    [Header("ï¿½fï¿½oï¿½bï¿½Oï¿½ï¿½ï¿½")]
     public bool showDebugInfo = true;
     public bool showPath = true;
 
@@ -38,20 +38,22 @@ public class LiftScript : MonoBehaviour
     private float currentSpeed;
     public static LiftScript instance;
 
+    private Rigidbody2D rb;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        rb = GetComponent<Rigidbody2D>();
         instance = this;
         startPosition = transform.position;
 
-        // ˆÚ“®ƒ|ƒCƒ“ƒg‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢ê‡AƒfƒtƒHƒ‹ƒg‚Ìƒpƒ^[ƒ“‚ğì¬
+        // ï¿½Ú“ï¿½ï¿½|ï¿½Cï¿½ï¿½ï¿½gï¿½ï¿½ï¿½İ’è‚³ï¿½ï¿½Ä‚ï¿½ï¿½È‚ï¿½ï¿½ê‡ï¿½Aï¿½fï¿½tï¿½Hï¿½ï¿½ï¿½gï¿½Ìƒpï¿½^ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ì¬
         if (liftmovementpoint == null || liftmovementpoint.Length == 0)
         {
             CreateDefaultMovementPoints();
         }
 
-        // Å‰‚ÌˆÚ“®‚ğŠJn
+        // ï¿½Åï¿½ï¿½ÌˆÚ“ï¿½ï¿½ï¿½ï¿½Jï¿½n
         if (liftmovementpoint.Length > 0)
         {
             SetNextTarget();
@@ -64,6 +66,7 @@ public class LiftScript : MonoBehaviour
         {
             MoveTowardsTarget();
         }
+        float move = Input.GetAxis("Horizontal");
     }
 
     void MoveTowardsTarget()
@@ -73,22 +76,22 @@ public class LiftScript : MonoBehaviour
             startPosition + currentPoint.targetPosition :
             currentPoint.targetPosition;
 
-        // –Ú•WˆÊ’u‚ÉŒü‚©‚Á‚ÄˆÚ“®
+        // ï¿½Ú•Wï¿½Ê’uï¿½ÉŒï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÄˆÚ“ï¿½
         Vector3 direction = (targetPos - transform.position).normalized;
         Vector3 movement = direction * currentSpeed * Time.deltaTime;
 
-        // –Ú•WˆÊ’u‚É“’B‚µ‚½‚©ƒ`ƒFƒbƒN
+        // ï¿½Ú•Wï¿½Ê’uï¿½É“ï¿½ï¿½Bï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½`ï¿½Fï¿½bï¿½N
         float distanceToTarget = Vector3.Distance(transform.position, targetPos);
 
         if (distanceToTarget <= 0.1f)
         {
-            // –Ú•WˆÊ’u‚É“’B
+            // ï¿½Ú•Wï¿½Ê’uï¿½É“ï¿½ï¿½B
             transform.position = targetPos;
             ReachTarget();
         }
         else
         {
-            // ˆÚ“®‚ğ‘±‚¯‚é
+            // ï¿½Ú“ï¿½ï¿½ğ‘±‚ï¿½ï¿½ï¿½
             transform.position += movement;
         }
     }
@@ -97,24 +100,24 @@ public class LiftScript : MonoBehaviour
     {
         if (showDebugInfo)
         {
-            Debug.Log($"ˆÚ“®ƒ|ƒCƒ“ƒg {currentPointIndex} ‚É“’B");
+            Debug.Log($"ï¿½Ú“ï¿½ï¿½|ï¿½Cï¿½ï¿½ï¿½g {currentPointIndex} ï¿½É“ï¿½ï¿½B");
         }
 
-        // Ÿ‚ÌˆÚ“®ƒ|ƒCƒ“ƒg‚ÉˆÚ“®
+        // ï¿½ï¿½ï¿½ÌˆÚ“ï¿½ï¿½|ï¿½Cï¿½ï¿½ï¿½gï¿½ÉˆÚ“ï¿½
         currentPointIndex++;
 
         if (currentPointIndex >= liftmovementpoint.Length)
         {
             if (loopMovement)
             {
-                currentPointIndex = 0; // ƒ‹[ƒv
+                currentPointIndex = 0; // ï¿½ï¿½ï¿½[ï¿½v
             }
             else
             {
-                isMoving = false; // ˆÚ“®’â~
+                isMoving = false; // ï¿½Ú“ï¿½ï¿½ï¿½~
                 if (showDebugInfo)
                 {
-                    Debug.Log("‘S‚Ä‚ÌˆÚ“®ƒ|ƒCƒ“ƒg‚ğ’Ê‰ß‚µ‚Ü‚µ‚½");
+                    Debug.Log("ï¿½Sï¿½Ä‚ÌˆÚ“ï¿½ï¿½|ï¿½Cï¿½ï¿½ï¿½gï¿½ï¿½Ê‰ß‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½");
                 }
                 return;
             }
@@ -133,14 +136,14 @@ public class LiftScript : MonoBehaviour
 
             if (showDebugInfo)
             {
-                Debug.Log($"Ÿ‚Ì–Ú•W: ƒ|ƒCƒ“ƒg {currentPointIndex}, •ûŒü: {currentDirection}, ‘¬“x: {currentSpeed}");
+                Debug.Log($"ï¿½ï¿½ï¿½Ì–Ú•W: ï¿½|ï¿½Cï¿½ï¿½ï¿½g {currentPointIndex}, ï¿½ï¿½ï¿½ï¿½: {currentDirection}, ï¿½ï¿½ï¿½x: {currentSpeed}");
             }
         }
     }
 
     void CreateDefaultMovementPoints()
     {
-        // ƒfƒtƒHƒ‹ƒg‚ÌˆÚ“®ƒpƒ^[ƒ“i³•ûŒ`j
+        // ï¿½fï¿½tï¿½Hï¿½ï¿½ï¿½gï¿½ÌˆÚ“ï¿½ï¿½pï¿½^ï¿½[ï¿½ï¿½ï¿½iï¿½ï¿½ï¿½ï¿½ï¿½`ï¿½j
         Vector3 basePos = transform.position;
         liftmovementpoint = new LiftMovementPoint[]
         {
@@ -151,7 +154,7 @@ public class LiftScript : MonoBehaviour
         };
     }
 
-    // ˆÚ“®ƒ|ƒCƒ“ƒg‚ğ“®“I‚Éİ’è‚·‚éƒƒ\ƒbƒh
+    // ï¿½Ú“ï¿½ï¿½|ï¿½Cï¿½ï¿½ï¿½gï¿½ğ“®“Iï¿½Éİ’è‚·ï¿½éƒï¿½\ï¿½bï¿½h
     public void SetMovementPoints(LiftMovementPoint[] newPoints)
     {
         liftmovementpoint = newPoints;
@@ -164,7 +167,7 @@ public class LiftScript : MonoBehaviour
         }
     }
 
-    // ˆÚ“®ƒ|ƒCƒ“ƒg‚ğ’Ç‰Á‚·‚éƒƒ\ƒbƒh
+    // ï¿½Ú“ï¿½ï¿½|ï¿½Cï¿½ï¿½ï¿½gï¿½ï¿½Ç‰ï¿½ï¿½ï¿½ï¿½éƒï¿½\ï¿½bï¿½h
     public void AddMovementPoint(Vector3 position, Vector3 direction, float speed = 0f)
     {
         LiftMovementPoint[] newPoints = new LiftMovementPoint[liftmovementpoint.Length + 1];
@@ -176,13 +179,13 @@ public class LiftScript : MonoBehaviour
         liftmovementpoint = newPoints;
     }
 
-    // ˆÚ“®‚ğˆê’â~/ÄŠJ‚·‚éƒƒ\ƒbƒh
+    // ï¿½Ú“ï¿½ï¿½ï¿½ï¿½êï¿½ï¿½~/ï¿½ÄŠJï¿½ï¿½ï¿½éƒï¿½\ï¿½bï¿½h
     public void SetMovementEnabled(bool enabled)
     {
         isMoving = enabled;
     }
 
-    // “Á’è‚Ìƒ|ƒCƒ“ƒg‚©‚çˆÚ“®‚ğŠJn
+    // ï¿½ï¿½ï¿½ï¿½Ìƒ|ï¿½Cï¿½ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½Ú“ï¿½ï¿½ï¿½ï¿½Jï¿½n
     public void StartFromPoint(int pointIndex)
     {
         if (pointIndex >= 0 && pointIndex < liftmovementpoint.Length)
@@ -193,19 +196,19 @@ public class LiftScript : MonoBehaviour
         }
     }
 
-    // Œ»İ‚ÌˆÚ“®ó‘Ô‚ğæ“¾
+    // ï¿½ï¿½ï¿½İ‚ÌˆÚ“ï¿½ï¿½ï¿½Ô‚ï¿½ï¿½æ“¾
     public bool IsMoving()
     {
         return isMoving;
     }
 
-    // Œ»İ‚Ìƒ|ƒCƒ“ƒgƒCƒ“ƒfƒbƒNƒX‚ğæ“¾
+    // ï¿½ï¿½ï¿½İ‚Ìƒ|ï¿½Cï¿½ï¿½ï¿½gï¿½Cï¿½ï¿½ï¿½fï¿½bï¿½Nï¿½Xï¿½ï¿½ï¿½æ“¾
     public int GetCurrentPointIndex()
     {
         return currentPointIndex;
     }
 
-    // ƒfƒoƒbƒO—p‚Ì•`‰æ
+    // ï¿½fï¿½oï¿½bï¿½Oï¿½pï¿½Ì•`ï¿½ï¿½
     void OnDrawGizmos()
     {
         if (!showDebugInfo) return;
@@ -214,26 +217,26 @@ public class LiftScript : MonoBehaviour
 
         if (liftmovementpoint != null && liftmovementpoint.Length > 0)
         {
-            // ˆÚ“®ƒ|ƒCƒ“ƒg‚ğ•`‰æ
+            // ï¿½Ú“ï¿½ï¿½|ï¿½Cï¿½ï¿½ï¿½gï¿½ï¿½`ï¿½ï¿½
             for (int i = 0; i < liftmovementpoint.Length; i++)
             {
                 Vector3 pointPos = useLocalPosition ?
                     basePos + liftmovementpoint[i].targetPosition :
                     liftmovementpoint[i].targetPosition;
 
-                // Œ»İ‚Ì–Ú•Wƒ|ƒCƒ“ƒg‚ğÔ‚ÅA‚»‚êˆÈŠO‚ğÂ‚Å•\¦
+                // ï¿½ï¿½ï¿½İ‚Ì–Ú•Wï¿½|ï¿½Cï¿½ï¿½ï¿½gï¿½ï¿½Ô‚ÅAï¿½ï¿½ï¿½ï¿½ÈŠOï¿½ï¿½Â‚Å•\ï¿½ï¿½
                 Gizmos.color = (i == currentPointIndex) ? Color.red : Color.blue;
                 Gizmos.DrawWireSphere(pointPos, 0.5f);
 
-                // ƒ|ƒCƒ“ƒg”Ô†‚ğ•\¦
+                // ï¿½|ï¿½Cï¿½ï¿½ï¿½gï¿½Ôï¿½ï¿½ï¿½\ï¿½ï¿½
                 Gizmos.color = Color.white;
 
-                // •ûŒü‚ğ–îˆó‚Å•\¦
+                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å•\ï¿½ï¿½
                 Gizmos.color = Color.yellow;
                 Gizmos.DrawRay(pointPos, liftmovementpoint[i].direction * 2f);
             }
 
-            // ƒpƒX‚ğü‚Å•`‰æ
+            // ï¿½pï¿½Xï¿½ï¿½ï¿½ï¿½Å•`ï¿½ï¿½
             if (showPath)
             {
                 Gizmos.color = Color.green;
@@ -269,7 +272,7 @@ public class LiftScript : MonoBehaviour
             }
         }
 
-        // Œ»İ‚ÌˆÚ“®•ûŒü‚ğ•\¦
+        // ï¿½ï¿½ï¿½İ‚ÌˆÚ“ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\ï¿½ï¿½
         if (Application.isPlaying)
         {
             Gizmos.color = Color.red;
