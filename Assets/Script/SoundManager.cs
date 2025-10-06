@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.Audio;
 public class SoundManager : MonoBehaviour
 {
     public AudioClip bgmClip;   // BGM‚Ì‰¹Œ¹ƒf[ƒ^

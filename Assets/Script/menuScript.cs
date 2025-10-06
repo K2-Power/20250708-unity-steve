@@ -25,9 +25,13 @@ public class menuScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("joystick button 7") || Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown("joystick button 7"))
         {
             button.Select();
+            menuopen = !menuopen;
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape))
+        {
             menuopen = !menuopen;
         }
         if (menuopen)
