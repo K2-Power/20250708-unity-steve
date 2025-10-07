@@ -1741,10 +1741,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8148378033867540533, guid: c1e710dfc056d9d48960158f80ff66fe, type: 3}
       propertyPath: showPath
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8148378033867540533, guid: c1e710dfc056d9d48960158f80ff66fe, type: 3}
       propertyPath: showDebugInfo
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148378033867540533, guid: c1e710dfc056d9d48960158f80ff66fe, type: 3}
+      propertyPath: useLocalPosition
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -1,5 +1,4 @@
 using System;
-using UnityEditor.Media;
 using UnityEngine;
 
 
@@ -21,15 +20,17 @@ public class Player : MonoBehaviour
     public GameObject LiftObject;
     public bool autoFlipChildren = true;
     private bool facingRight = true;
+    private Animator animator;
     private Transform[] childTransforms;
     private Vector3[] originalChildPositions;
-
+    private float originalGravity;
+    private float originalMass;
     void Start()
     {
         StoreOriginalChildPositions();
         instance = this;
         rb = GetComponent<Rigidbody2D>();  // Rigidbody2Dを取得
-
+        animator = GetComponent<Animator>();
 
     }
 
@@ -42,6 +43,7 @@ public class Player : MonoBehaviour
         // 左右移動（A：左, D：右）
         if (Mathf.Abs(horizontal) > 0.01f)
         {
+            animator.SetBool("moveFlag",true);
             Vector3 movement = new Vector3(horizontal * (moveSpeed * Time.deltaTime), 0, 0);
             //transform.Translate(movement);
             //rb.linearVelocityX = movement.x;
@@ -63,6 +65,10 @@ public class Player : MonoBehaviour
                     transform.rotation = Quaternion.Euler(0, 0, 0);                    
                 }
             }
+        }
+        if (Mathf.Abs(horizontal) == 0.0f)
+        {
+            animator.SetBool("moveFlag", false);
         }
 
 
@@ -248,6 +254,16 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void EnterWind(float newGravity, float newMass)
+    {
+        rb.gravityScale = newGravity;
+        rb.mass = newMass;
+    }
+    public void ExitWind()
+    {
+        rb.gravityScale = originalGravity;
+        rb.mass = originalMass;
+    }
 
 }
 

@@ -2042,7 +2042,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df05baa95688fec40a62fb09b1737fe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: GameScene7
+  sceneName: TitleScene
 --- !u!50 &1409382933
 Rigidbody2D:
   serializedVersion: 5
