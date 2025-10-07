@@ -9,7 +9,7 @@ public class Player2 : MonoBehaviour
     public float minAlpha = 0f;         // 最小透明度
     public float maxAlpha = 1f;         // 最大透明度
     public float blinkStartTime = 2f;
-
+    private Rigidbody2D rb;
 
     private Coroutine blinkCoroutine;
     private Color originalColor;
@@ -18,8 +18,9 @@ public class Player2 : MonoBehaviour
     {
         if (spriteRenderer == null)
             spriteRenderer = GetComponent<SpriteRenderer>();
-
         originalColor = spriteRenderer.color;
+        rb = GetComponent<Rigidbody2D>();
+
         // 指定時間後にこのオブジェクトを削除する
         Destroy(gameObject, lifetime);
     }
@@ -38,12 +39,23 @@ public class Player2 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("Conveyors"))
+        {
+            // Freeze Position X を解除
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
         if (collision.CompareTag("Dead"))
         {
 
         }
     }
-   
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Conveyors"))
+        {
+            // 再び Freeze Position X を有効化
+            rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+        }
+    }
 
-    
 }

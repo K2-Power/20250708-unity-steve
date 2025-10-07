@@ -31,7 +31,7 @@ public class Button : MonoBehaviour
     {
         if (other.CompareTag("Dead"))
         {
-            SoundManager.instance.PlaySE(1);
+            //SoundManager.instance.PlaySE(1);
             Vector3 localscale = gameObject.transform.localScale;
             localscale.x *= -1;
             transform.localScale = localscale;

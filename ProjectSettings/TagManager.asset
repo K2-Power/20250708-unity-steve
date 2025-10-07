@@ -9,6 +9,7 @@ TagManager:
   - Dead
   - ego
   - Lift
+  - Conveyors
   layers:
   - Default
   - TransparentFX
