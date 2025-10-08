@@ -43,7 +43,10 @@ public class Player : MonoBehaviour
         // 左右移動（A：左, D：右）
         if (Mathf.Abs(horizontal) > 0.01f)
         {
-            animator.SetBool("moveFlag",true);
+            if (animator)
+            {
+                animator.SetBool("moveFlag",true);
+            }
             Vector3 movement = new Vector3(horizontal * (moveSpeed * Time.deltaTime), 0, 0);
             //transform.Translate(movement);
             //rb.linearVelocityX = movement.x;
@@ -68,7 +71,10 @@ public class Player : MonoBehaviour
         }
         if (Mathf.Abs(horizontal) == 0.0f)
         {
-            animator.SetBool("moveFlag", false);
+            if (animator)
+            {
+                animator.SetBool("moveFlag", false);
+            }
         }
 
 
