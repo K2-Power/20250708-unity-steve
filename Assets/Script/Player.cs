@@ -31,6 +31,8 @@ public class Player : MonoBehaviour
         instance = this;
         rb = GetComponent<Rigidbody2D>();  // Rigidbody2Dを取得
         animator = GetComponent<Animator>();
+        originalGravity = rb.gravityScale;
+        originalMass = rb.mass;
 
     }
 
