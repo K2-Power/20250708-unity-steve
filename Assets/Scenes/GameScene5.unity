@@ -992,7 +992,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -999
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.95621157, a: 1}
+  m_Color: {r: 0, g: 0.23529412, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1112,7 +1112,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -999
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0.42412055, b: 0, a: 1}
+  m_Color: {r: 0.29411766, g: 0.72156864, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2874,15 +2874,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4345790817233106343, guid: d66dda00365887344958e6dc214df965, type: 3}
       propertyPath: m_Color.b
-      value: 0.8789234
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4345790817233106343, guid: d66dda00365887344958e6dc214df965, type: 3}
       propertyPath: m_Color.g
-      value: 0
+      value: 0.23529412
       objectReference: {fileID: 0}
     - target: {fileID: 4345790817233106343, guid: d66dda00365887344958e6dc214df965, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7753296217530585447, guid: d66dda00365887344958e6dc214df965, type: 3}
       propertyPath: m_LocalScale.x
@@ -3233,15 +3233,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4345790817233106343, guid: d66dda00365887344958e6dc214df965, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4345790817233106343, guid: d66dda00365887344958e6dc214df965, type: 3}
       propertyPath: m_Color.g
-      value: 0.45623526
+      value: 0.7189176
       objectReference: {fileID: 0}
     - target: {fileID: 4345790817233106343, guid: d66dda00365887344958e6dc214df965, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0.2924527
       objectReference: {fileID: 0}
     - target: {fileID: 7753296217530585447, guid: d66dda00365887344958e6dc214df965, type: 3}
       propertyPath: m_LocalScale.x
