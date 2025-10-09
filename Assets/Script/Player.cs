@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 
 public class Player : MonoBehaviour
@@ -38,7 +39,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        //Gamepad.current?.SetMotorSpeeds(2.0f, 2.0f);
+        //Gamepad.current?.SetMotorSpeeds(6.0f, 6.0f);
         float horizontal = Input.GetAxis("Horizontal");
         float vert = Input.GetAxis("Vertical");
         //Debug.Log(horizontal);

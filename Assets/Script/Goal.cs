@@ -4,23 +4,23 @@ using UnityEngine.SceneManagement;
 public class Goal : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
-    private Color originalColor;
+    public Sprite OFFsprite;
+    public Sprite ONsprite;
     public string sceneName; // インスペクターで指定するシーン名（例："GameScene"）
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        originalColor = spriteRenderer.color;
-        spriteRenderer.color = Color.gray;
+        spriteRenderer.sprite = OFFsprite;
     }
     void Update()
     {
         if (Button.instance.isTouchingDead == true)
         {
-            spriteRenderer.color = originalColor;
+            spriteRenderer.sprite = ONsprite;
         }
         else
         {
-            spriteRenderer.color = Color.gray;
+            spriteRenderer.sprite = OFFsprite;
         }
     }
 

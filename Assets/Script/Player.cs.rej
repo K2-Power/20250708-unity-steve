@@ -1,0 +1,10 @@
+diff a/Assets/Script/Player.cs b/Assets/Script/Player.cs	(rejected hunks)
+@@ -90,7 +90,7 @@
+                 {
+                     CloneCount--;
+                     Instantiate(player2Prefab, ShotPoint.transform.position, Quaternion.identity);
+-                    SoundManager.instance.PlaySE(0);
++                    //SoundManager.instance.PlaySE(0);
+                 }
+                 else
+                 {
