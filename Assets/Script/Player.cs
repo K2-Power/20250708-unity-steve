@@ -90,7 +90,7 @@ public class Player : MonoBehaviour
                 {
                     CloneCount--;
                     Instantiate(player2Prefab, ShotPoint.transform.position, Quaternion.identity);
-                    SoundManager.instance.PlaySE(0);
+                    //SoundManager.instance.PlaySE(0);
                 }
                 else
                 {
@@ -202,6 +202,10 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Lift"))
         {
             transform.SetParent(collision.transform);
+        }
+        if (collision.gameObject.CompareTag("Conveyors"))
+        {
+            isGrounded = true;
         }
     }
     private void OnCollisionStay2D(Collision2D collision)
