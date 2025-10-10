@@ -40,6 +40,14 @@ public class Player : MonoBehaviour
     void Update()
     {
         //Gamepad.current?.SetMotorSpeeds(6.0f, 6.0f);
+        if (isGrounded && animator)
+        {
+            animator.SetBool("jumpFlag",false);
+        }
+        if (!isGrounded && animator)
+        {
+            animator.SetBool("jumpFlag",true);
+        }
         float horizontal = Input.GetAxis("Horizontal");
         float vert = Input.GetAxis("Vertical");
         //Debug.Log(horizontal);
@@ -219,6 +227,10 @@ public class Player : MonoBehaviour
         {
             isGrounded = true;
         }
+        if (collision.gameObject.CompareTag("Conveyors"))
+        {
+            isGrounded = true;
+        }
 
     }
     private void OnCollisionExit2D(Collision2D collision)
@@ -234,6 +246,10 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Lift"))
         {
             transform.SetParent(null);
+        }
+        if (collision.gameObject.CompareTag("Conveyors"))
+        {
+            isGrounded = false;
         }
     }
 
