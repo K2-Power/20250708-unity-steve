@@ -6,12 +6,14 @@ public class StageButton1 : MonoBehaviour
 {
     public List<GameObject> ButtonObject;
     public bool PlayerOREgo = false;
+    public bool ALL = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (PlayerOREgo == false)
+        if (PlayerOREgo == false || ALL == true)
         {
-            if (collision.CompareTag("ego"))
+            if (collision.collider.CompareTag("ego"))
             {
                 foreach (GameObject obj in ButtonObject)
                 {
@@ -20,11 +22,12 @@ public class StageButton1 : MonoBehaviour
                         obj.SetActive(false);
                     }
                 }
+                
             }
         }
-        else
+        if (PlayerOREgo == true || ALL == true)
         {
-            if (collision.CompareTag("Player"))
+            if (collision.collider.CompareTag("Player"))
             {
                 foreach (GameObject obj in ButtonObject)
                 {
@@ -33,14 +36,15 @@ public class StageButton1 : MonoBehaviour
                         obj.SetActive(false);
                     }
                 }
+                
             }
         }
     }
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
-        if (PlayerOREgo == false)
+        if (PlayerOREgo == false || ALL == true)
         {
-            if (collision.CompareTag("ego"))
+            if (collision.collider.CompareTag("ego"))
             {
                 foreach (GameObject obj in ButtonObject)
                 {
@@ -49,11 +53,12 @@ public class StageButton1 : MonoBehaviour
                         obj.SetActive(true);
                     }
                 }
+               
             }
         }
-        else
+        if (PlayerOREgo == true || ALL == true)
         {
-            if (collision.CompareTag("Player"))
+            if (collision.collider.CompareTag("Player"))
             {
                 foreach (GameObject obj in ButtonObject)
                 {
@@ -62,6 +67,7 @@ public class StageButton1 : MonoBehaviour
                         obj.SetActive(true);
                     }
                 }
+               
             }
         }
     }
