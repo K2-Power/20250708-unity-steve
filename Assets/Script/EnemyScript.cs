@@ -18,15 +18,15 @@ public class EnemyMovementPoint
 
 public class EnemyScript : MonoBehaviour
 {
-    [Header("ç§»å‹•è¨­å®š")]
+    [Header("ˆÚ“®İ’è")]
     public float defaultSpeed = 3f;
-    public bool loopMovement = true; // ç§»å‹•ãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’ãƒ«ãƒ¼ãƒ—ã™ã‚‹ã‹
-    public bool useLocalPosition = false; // ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™ã‚’ä½¿ç”¨ã™ã‚‹ã‹
+    public bool loopMovement = true; // ˆÚ“®ƒpƒ^[ƒ“‚ğƒ‹[ƒv‚·‚é‚©
+    public bool useLocalPosition = false; // ƒ[ƒJƒ‹À•W‚ğg—p‚·‚é‚©
 
-    [Header("ç§»å‹•ãƒã‚¤ãƒ³ãƒˆ")]
+    [Header("ˆÚ“®ƒ|ƒCƒ“ƒg")]
     public EnemyMovementPoint[] movementPoints;
 
-    [Header("ãƒ‡ãƒãƒƒã‚°æƒ…å ±")]
+    [Header("ƒfƒoƒbƒOî•ñ")]
     public bool showDebugInfo = true;
     public bool showPath = true;
 
@@ -43,13 +43,13 @@ public class EnemyScript : MonoBehaviour
         instance = this;
         startPosition = transform.position;
 
-        // ç§»å‹•ãƒã‚¤ãƒ³ãƒˆãŒè¨­å®šã•ã‚Œã¦ã„ãªã„å ´åˆã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’ä½œæˆ
+        // ˆÚ“®ƒ|ƒCƒ“ƒg‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢ê‡AƒfƒtƒHƒ‹ƒg‚Ìƒpƒ^[ƒ“‚ğì¬
         if (movementPoints == null || movementPoints.Length == 0)
         {
             CreateDefaultMovementPoints();
         }
 
-        // æœ€åˆã®ç§»å‹•ã‚’é–‹å§‹
+        // Å‰‚ÌˆÚ“®‚ğŠJn
         if (movementPoints.Length > 0)
         {
             SetNextTarget();
@@ -71,24 +71,22 @@ public class EnemyScript : MonoBehaviour
             startPosition + currentPoint.targetPosition :
             currentPoint.targetPosition;
 
-        // ç›®æ¨™ä½ç½®ã«å‘ã‹ã£ã¦ç§»å‹•
+        // –Ú•WˆÊ’u‚ÉŒü‚©‚Á‚ÄˆÚ“®
         Vector3 direction = (targetPos - transform.position).normalized;
         Vector3 movement = direction * currentSpeed * Time.deltaTime;
 
-
-
-        // ç›®æ¨™ä½ç½®ã«åˆ°é”ã—ãŸã‹ãƒã‚§ãƒƒã‚¯
+        // –Ú•WˆÊ’u‚É“’B‚µ‚½‚©ƒ`ƒFƒbƒN
         float distanceToTarget = Vector3.Distance(transform.position, targetPos);
 
         if (distanceToTarget <= 0.1f)
         {
-            // ç›®æ¨™ä½ç½®ã«åˆ°é”
+            // –Ú•WˆÊ’u‚É“’B
             transform.position = targetPos;
             ReachTarget();
         }
         else
         {
-            // ç§»å‹•ã‚’ç¶šã‘ã‚‹
+            // ˆÚ“®‚ğ‘±‚¯‚é
             transform.position += movement;
         }
     }
@@ -97,27 +95,24 @@ public class EnemyScript : MonoBehaviour
     {
         if (showDebugInfo)
         {
-            Debug.Log($"ç§»å‹•ãƒã‚¤ãƒ³ãƒˆ {currentPointIndex} ã«åˆ°é”");
+            Debug.Log($"ˆÚ“®ƒ|ƒCƒ“ƒg {currentPointIndex} ‚É“’B");
         }
 
-        // å„ãƒã‚¤ãƒ³ãƒˆåˆ°é”ã”ã¨ã«å›è»¢å‡¦ç†ã‚’å®Ÿè¡Œ
-        RotateAtPoint(currentPointIndex);
-
-        // æ¬¡ã®ç§»å‹•ãƒã‚¤ãƒ³ãƒˆã¸
+        // Ÿ‚ÌˆÚ“®ƒ|ƒCƒ“ƒg‚ÉˆÚ“®
         currentPointIndex++;
 
         if (currentPointIndex >= movementPoints.Length)
         {
             if (loopMovement)
             {
-                currentPointIndex = 0;
+                currentPointIndex = 0; // ƒ‹[ƒv
             }
             else
             {
-                isMoving = false;
+                isMoving = false; // ˆÚ“®’â~
                 if (showDebugInfo)
                 {
-                    Debug.Log("å…¨ã¦ã®ç§»å‹•ãƒã‚¤ãƒ³ãƒˆã‚’é€šéã—ã¾ã—ãŸ");
+                    Debug.Log("‘S‚Ä‚ÌˆÚ“®ƒ|ƒCƒ“ƒg‚ğ’Ê‰ß‚µ‚Ü‚µ‚½");
                 }
                 return;
             }
@@ -126,23 +121,6 @@ public class EnemyScript : MonoBehaviour
         SetNextTarget();
     }
 
-    void RotateAtPoint(int index)
-    {
-        // å›è»¢è§’åº¦ãƒªã‚¹ãƒˆï¼ˆZè»¸ç”¨ï¼‰
-        float[] rotationAngles = { -90f, 0f, 90f, 180f };
-
-        // ãƒã‚¤ãƒ³ãƒˆæ•°ã«å¿œã˜ã¦å›è»¢ã‚’ç¹°ã‚Šè¿”ã™
-        int angleIndex = index % rotationAngles.Length;
-        float targetZRotation = rotationAngles[angleIndex];
-
-        // ğŸ”¹ Yè»¸ã‚’å¸¸ã«180Â°å›ºå®šã€Zè»¸ã ã‘å¤‰æ›´
-        transform.rotation = Quaternion.Euler(0f, 180f, targetZRotation);
-
-        if (showDebugInfo)
-        {
-            Debug.Log($"å›è»¢: Y=180Â°, Z={targetZRotation}Â° ã«å¤‰æ›´");
-        }
-    }
     void SetNextTarget()
     {
         if (currentPointIndex < movementPoints.Length)
@@ -153,14 +131,14 @@ public class EnemyScript : MonoBehaviour
 
             if (showDebugInfo)
             {
-                Debug.Log($"æ¬¡ã®ç›®æ¨™: ãƒã‚¤ãƒ³ãƒˆ {currentPointIndex}, æ–¹å‘: {currentDirection}, é€Ÿåº¦: {currentSpeed}");
+                Debug.Log($"Ÿ‚Ì–Ú•W: ƒ|ƒCƒ“ƒg {currentPointIndex}, •ûŒü: {currentDirection}, ‘¬“x: {currentSpeed}");
             }
         }
     }
 
     void CreateDefaultMovementPoints()
     {
-        // ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ç§»å‹•ãƒ‘ã‚¿ãƒ¼ãƒ³ï¼ˆæ­£æ–¹å½¢ï¼‰
+        // ƒfƒtƒHƒ‹ƒg‚ÌˆÚ“®ƒpƒ^[ƒ“i³•ûŒ`j
         Vector3 basePos = transform.position;
         movementPoints = new EnemyMovementPoint[]
         {
@@ -171,7 +149,7 @@ public class EnemyScript : MonoBehaviour
         };
     }
 
-    // ç§»å‹•ãƒã‚¤ãƒ³ãƒˆã‚’å‹•çš„ã«è¨­å®šã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
+    // ˆÚ“®ƒ|ƒCƒ“ƒg‚ğ“®“I‚Éİ’è‚·‚éƒƒ\ƒbƒh
     public void SetMovementPoints(EnemyMovementPoint[] newPoints)
     {
         movementPoints = newPoints;
@@ -184,7 +162,7 @@ public class EnemyScript : MonoBehaviour
         }
     }
 
-    // ç§»å‹•ãƒã‚¤ãƒ³ãƒˆã‚’è¿½åŠ ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
+    // ˆÚ“®ƒ|ƒCƒ“ƒg‚ğ’Ç‰Á‚·‚éƒƒ\ƒbƒh
     public void AddMovementPoint(Vector3 position, Vector3 direction, float speed = 0f)
     {
         EnemyMovementPoint[] newPoints = new EnemyMovementPoint[movementPoints.Length + 1];
@@ -196,13 +174,13 @@ public class EnemyScript : MonoBehaviour
         movementPoints = newPoints;
     }
 
-    // ç§»å‹•ã‚’ä¸€æ™‚åœæ­¢/å†é–‹ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
+    // ˆÚ“®‚ğˆê’â~/ÄŠJ‚·‚éƒƒ\ƒbƒh
     public void SetMovementEnabled(bool enabled)
     {
         isMoving = enabled;
     }
 
-    // ç‰¹å®šã®ãƒã‚¤ãƒ³ãƒˆã‹ã‚‰ç§»å‹•ã‚’é–‹å§‹
+    // “Á’è‚Ìƒ|ƒCƒ“ƒg‚©‚çˆÚ“®‚ğŠJn
     public void StartFromPoint(int pointIndex)
     {
         if (pointIndex >= 0 && pointIndex < movementPoints.Length)
@@ -213,19 +191,19 @@ public class EnemyScript : MonoBehaviour
         }
     }
 
-    // ç¾åœ¨ã®ç§»å‹•çŠ¶æ…‹ã‚’å–å¾—
+    // Œ»İ‚ÌˆÚ“®ó‘Ô‚ğæ“¾
     public bool IsMoving()
     {
         return isMoving;
     }
 
-    // ç¾åœ¨ã®ãƒã‚¤ãƒ³ãƒˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—
+    // Œ»İ‚Ìƒ|ƒCƒ“ƒgƒCƒ“ƒfƒbƒNƒX‚ğæ“¾
     public int GetCurrentPointIndex()
     {
         return currentPointIndex;
     }
 
-    // ãƒ‡ãƒãƒƒã‚°ç”¨ã®æç”»
+    // ƒfƒoƒbƒO—p‚Ì•`‰æ
     void OnDrawGizmos()
     {
         if (!showDebugInfo) return;
@@ -234,26 +212,26 @@ public class EnemyScript : MonoBehaviour
 
         if (movementPoints != null && movementPoints.Length > 0)
         {
-            // ç§»å‹•ãƒã‚¤ãƒ³ãƒˆã‚’æç”»
+            // ˆÚ“®ƒ|ƒCƒ“ƒg‚ğ•`‰æ
             for (int i = 0; i < movementPoints.Length; i++)
             {
                 Vector3 pointPos = useLocalPosition ?
                     basePos + movementPoints[i].targetPosition :
                     movementPoints[i].targetPosition;
 
-                // ç¾åœ¨ã®ç›®æ¨™ãƒã‚¤ãƒ³ãƒˆã‚’èµ¤ã§ã€ãã‚Œä»¥å¤–ã‚’é’ã§è¡¨ç¤º
+                // Œ»İ‚Ì–Ú•Wƒ|ƒCƒ“ƒg‚ğÔ‚ÅA‚»‚êˆÈŠO‚ğÂ‚Å•\¦
                 Gizmos.color = (i == currentPointIndex) ? Color.red : Color.blue;
                 Gizmos.DrawWireSphere(pointPos, 0.5f);
 
-                // ãƒã‚¤ãƒ³ãƒˆç•ªå·ã‚’è¡¨ç¤º
+                // ƒ|ƒCƒ“ƒg”Ô†‚ğ•\¦
                 Gizmos.color = Color.white;
 
-                // æ–¹å‘ã‚’çŸ¢å°ã§è¡¨ç¤º
+                // •ûŒü‚ğ–îˆó‚Å•\¦
                 Gizmos.color = Color.yellow;
                 Gizmos.DrawRay(pointPos, movementPoints[i].direction * 2f);
             }
 
-            // ãƒ‘ã‚¹ã‚’ç·šã§æç”»
+            // ƒpƒX‚ğü‚Å•`‰æ
             if (showPath)
             {
                 Gizmos.color = Color.green;
@@ -289,7 +267,7 @@ public class EnemyScript : MonoBehaviour
             }
         }
 
-        // ç¾åœ¨ã®ç§»å‹•æ–¹å‘ã‚’è¡¨ç¤º
+        // Œ»İ‚ÌˆÚ“®•ûŒü‚ğ•\¦
         if (Application.isPlaying)
         {
             Gizmos.color = Color.red;
