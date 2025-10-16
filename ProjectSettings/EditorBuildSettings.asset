@@ -16,17 +16,20 @@ EditorBuildSettings:
     guid: 583dadd782a87cc479def171af435ffa
   - enabled: 1
     path: Assets/Scenes/GameScene2.unity
+    guid: e7acfcff256c96249afd138c4a7d16d8
+  - enabled: 0
+    path: Assets/Scenes/GameScene2old.unity
     guid: 71df8876c2ec9d246bdbc63bf08b3e59
   - enabled: 1
     path: Assets/Scenes/GameScene3.unity
-    guid: e78c27dff2f3b024a970799ecfef531d
+    guid: c9be5799cec24b848861a2264094f6b2
   - enabled: 1
     path: Assets/Scenes/GameScene4.unity
     guid: e3157d357ac62414fb7f04f6215e39a3
   - enabled: 1
     path: Assets/Scenes/GameScene5.unity
     guid: 7eb105c3506964447967f688b08c15f8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LiftingScene.unity
     guid: 8b83d15660353094fa7e41f1a2a3d8fe
   - enabled: 1
@@ -38,7 +41,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameScene8.unity
     guid: 581ad0f6743fa114ca25d1ed2d3699f8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/HORYU.unity
     guid: 2fae28c1b8c3648468e56c35a8d8bdb8
   - enabled: 1

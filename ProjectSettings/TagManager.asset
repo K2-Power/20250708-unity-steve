@@ -10,6 +10,7 @@ TagManager:
   - ego
   - Lift
   - Conveyors
+  - Switch
   layers:
   - Default
   - TransparentFX
