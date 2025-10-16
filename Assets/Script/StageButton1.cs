@@ -9,7 +9,7 @@ public class StageButton1 : MonoBehaviour
     public bool ALL = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if (PlayerOREgo == false || ALL == true)
         {
