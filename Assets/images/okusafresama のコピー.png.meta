@@ -159,7 +159,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      "okusafresama \u306E\u30B3\u30D4\u30FC_0": 1711796111257757775
+      "okusafresama \u306E\u30B3\u30D4\u30FC_1": -3331832738107136772
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

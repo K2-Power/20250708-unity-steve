@@ -3,11 +3,12 @@ using UnityEngine.SceneManagement;
 
 public class Tutorial : MonoBehaviour
 {
+    public string gamescene;
     void Update()
     {
-        if (Input.GetKeyDown("joystick button 2") || Input.GetMouseButtonDown(1))
+        if (Input.GetKeyDown("joystick button 2") || Input.GetMouseButtonDown(0))
         {
-            SceneManager.LoadScene("GameScene1");
+            SceneManager.LoadScene(gamescene);
         }
     }
 }
