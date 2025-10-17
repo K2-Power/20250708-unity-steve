@@ -1676,7 +1676,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 1472b7cbd9233a44ea16777639569fa4, type: 3}
 --- !u!1 &908353161 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 6803194390173654221, guid: 1472b7cbd9233a44ea16777639569fa4, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4924602059815720516, guid: 1472b7cbd9233a44ea16777639569fa4, type: 3}
   m_PrefabInstance: {fileID: 908353160}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &937361392
@@ -2070,7 +2070,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -32768
-  m_Sprite: {fileID: 342415141071418007, guid: 753028e167c895b4a91cf6efc55f77f0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 84e38bed7931bf748acb008407866826, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
