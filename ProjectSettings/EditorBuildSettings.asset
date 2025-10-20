@@ -9,28 +9,28 @@ EditorBuildSettings:
     path: Assets/Scenes/TitleSceneold.unity
     guid: 21020ab60a12bf94fac6e401d4165fac
   - enabled: 1
-    path: Assets/Scenes/TitleScene.unity
+    path: Assets/Scenes/GameScene/TitleScene.unity
     guid: 50de31bc96d9a5c4e90cdc94f77b7330
   - enabled: 1
-    path: Assets/Scenes/TutorialScene.unity
+    path: Assets/Scenes/GameScene/TutorialScene.unity
     guid: 7f87e0db7523f524daeb62b96a05f318
   - enabled: 1
-    path: Assets/Scenes/GameScene1.unity
+    path: Assets/Scenes/GameScene/GameScene1.unity
     guid: 583dadd782a87cc479def171af435ffa
   - enabled: 1
-    path: Assets/Scenes/GameScene2.unity
+    path: Assets/Scenes/GameScene/GameScene2.unity
     guid: e7acfcff256c96249afd138c4a7d16d8
   - enabled: 0
     path: Assets/Scenes/GameScene2old.unity
     guid: 71df8876c2ec9d246bdbc63bf08b3e59
   - enabled: 1
-    path: Assets/Scenes/GameScene3.unity
+    path: Assets/Scenes/GameScene/GameScene3.unity
     guid: c9be5799cec24b848861a2264094f6b2
   - enabled: 1
-    path: Assets/Scenes/GameScene4.unity
+    path: Assets/Scenes/GameScene/GameScene4.unity
     guid: e3157d357ac62414fb7f04f6215e39a3
   - enabled: 1
-    path: Assets/Scenes/GameScene5.unity
+    path: Assets/Scenes/GameScene/GameScene4.unity
     guid: 7eb105c3506964447967f688b08c15f8
   - enabled: 0
     path: Assets/Scenes/LiftingScene.unity
@@ -48,7 +48,7 @@ EditorBuildSettings:
     path: Assets/Scenes/HORYU.unity
     guid: 2fae28c1b8c3648468e56c35a8d8bdb8
   - enabled: 1
-    path: Assets/Scenes/ClearScene.unity
+    path: Assets/Scenes/GameScene/ClearScene.unity
     guid: fa319adb1d49ed6478d4939ed663f385
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
