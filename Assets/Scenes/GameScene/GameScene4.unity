@@ -1173,7 +1173,7 @@ PrefabInstance:
     - target: {fileID: 8718184644410469397, guid: b1544048132b39e469a10f498f1f8d7d, type: 3}
       propertyPath: ResetText
       value: 
-      objectReference: {fileID: 633104392}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1632,11 +1632,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1472b7cbd9233a44ea16777639569fa4, type: 3}
---- !u!1 &633104392 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6803194390173654221, guid: 1472b7cbd9233a44ea16777639569fa4, type: 3}
-  m_PrefabInstance: {fileID: 633104391}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &714529399
 GameObject:
   m_ObjectHideFlags: 0
@@ -1664,7 +1659,7 @@ Transform:
   m_GameObject: {fileID: 714529399}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.70710707, w: 0.70710653}
-  m_LocalPosition: {x: -3.08, y: -2.98, z: 0.031001372}
+  m_LocalPosition: {x: -3.08, y: -1.365, z: 0.031001372}
   m_LocalScale: {x: 0.49006712, y: 3.426829, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
