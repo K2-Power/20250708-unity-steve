@@ -247,6 +247,7 @@ public class Player : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Lift"))
         {
+            transform.SetParent(collision.transform);
             isGrounded = true;
         }
     }
