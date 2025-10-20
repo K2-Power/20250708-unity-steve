@@ -44,9 +44,14 @@ public class Player2 : MonoBehaviour
             // Freeze Position X Çâèú
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
-        if (collision.CompareTag("Dead"))
+        if (collision.CompareTag("Lift"))
         {
-
+            if (LiftScript.instance.egofleezeX)
+            {
+                rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            }
+            //rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            transform.SetParent(collision.transform);
         }
     }
     void OnCollisionExit2D(Collision2D collision)
@@ -55,6 +60,15 @@ public class Player2 : MonoBehaviour
         {
             // çƒÇ— Freeze Position X ÇóLå¯âª
             rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+        }
+        if (collision.gameObject.CompareTag("Lift"))
+        {
+            if (LiftScript.instance.egofleezeX)
+            {
+                rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+            }
+            //rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+            transform.SetParent(null);
         }
     }
 

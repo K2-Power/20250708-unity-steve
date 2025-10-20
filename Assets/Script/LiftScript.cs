@@ -22,7 +22,7 @@ public class LiftScript : MonoBehaviour
     public float defaultSpeed = 3f;
     public bool loopMovement = true; // �ړ��p�^�[�������[�v���邩
     public bool useLocalPosition = false; // ���[�J�����W���g�p���邩
-    public bool sticky = false; // ��ɏ�����v���C���[���t���Ă��邩
+    public bool egofleezeX = false; // ��ɏ�����v���C���[���t���Ă��邩
 
     [Header("�ړ��|�C���g")]
     public LiftMovementPoint[] liftmovementpoint;

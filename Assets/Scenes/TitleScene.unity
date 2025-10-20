@@ -244,6 +244,7 @@ MonoBehaviour:
   button1: {fileID: 1145945641}
   menubutton: {fileID: 1355059884}
   menubutton1: {fileID: 1145945639}
+  tutorial: {fileID: 0}
 --- !u!1 &346401160
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,7 +396,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.745283, g: 0.745283, b: 0.745283, a: 1}
-    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_SelectedColor: {r: 0.5372549, g: 0.5372549, b: 0.5372549, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5686275}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -606,7 +607,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.745283, g: 0.745283, b: 0.745283, a: 1}
-    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_SelectedColor: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5686275}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -628,14 +629,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 285175693}
         m_TargetAssemblyTypeName: TitlemenuScript, Assembly-CSharp
-        m_MethodName: StringArgFunction
+        m_MethodName: StringScenego
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: TutorialScene
+          m_StringArgument: GameScene1
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1355059887
@@ -919,7 +920,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: d4a68f4ec15b487418359e97ecf1ebb7, type: 3}
   m_Resource: {fileID: 8300000, guid: d4a68f4ec15b487418359e97ecf1ebb7, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.605
+  m_Volume: 0.135
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1030,7 +1031,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb57570c9d062bc4e850a72b561cff9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgm: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -140,6 +141,10 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("Ground"))
+        {
+            isGrounded = true;
+        }
         if (collision.CompareTag("Dead"))
         {
             Destroy(gameObject);
@@ -164,6 +169,10 @@ public class Player : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
 
+        if (collision.CompareTag("Ground"))
+        {
+            isGrounded = true;
+        }
         if (collision.CompareTag("ego"))
         {
             isGrounded = true;
@@ -184,6 +193,10 @@ public class Player : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (collision.CompareTag("Ground"))
+        {
+            isGrounded = false;
+        }
         if (collision.CompareTag("ego"))
         {
             isGrounded = false;
@@ -220,7 +233,7 @@ public class Player : MonoBehaviour
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Ground") )
+        if (collision.collider.CompareTag("Ground"))
         {
             isGrounded = true;
         }
