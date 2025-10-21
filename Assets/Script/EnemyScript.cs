@@ -22,6 +22,7 @@ public class EnemyScript : MonoBehaviour
     public float defaultSpeed = 3f;
     public bool loopMovement = true; // 移動パターンをループするか
     public bool useLocalPosition = false; // ローカル座標を使用するか
+    public int rotation = 0; // 回転する方向
 
     [Header("移動ポイント")]
     public EnemyMovementPoint[] movementPoints;
@@ -99,7 +100,18 @@ public class EnemyScript : MonoBehaviour
         }
 
         // 🔹 各ポイント到達ごとに回転する処理を追加
-        RotateAtPoint(currentPointIndex);
+        switch (rotation)
+        {
+            case 0:
+                RotateAtPoint(currentPointIndex);
+                break;
+            case 1:
+                RotateAtPoint2(currentPointIndex);
+                break;
+            default:
+                break;
+        }
+        
 
         // 次の移動ポイントに移動
         currentPointIndex++;
@@ -128,6 +140,25 @@ public class EnemyScript : MonoBehaviour
     {
         // 回転角度リスト
         float[] rotationAngles = { -90f, 0f, 90f, 180f };
+
+
+        // ポイント数に応じて回転を繰り返す
+        int angleIndex = index % rotationAngles.Length;
+        float targetZRotation = rotationAngles[angleIndex];
+
+        // 2D用Z軸回転
+        transform.rotation = Quaternion.Euler(0f, 180f, targetZRotation);
+
+        if (showDebugInfo)
+        {
+            Debug.Log($"回転: {targetZRotation}° に変更");
+        }
+    }
+    void RotateAtPoint2(int index)
+    {
+        // 回転角度リスト
+        float[] rotationAngles = { 180f, 90f, 0f, -90f };
+
 
         // ポイント数に応じて回転を繰り返す
         int angleIndex = index % rotationAngles.Length;
