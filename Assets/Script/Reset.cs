@@ -9,7 +9,10 @@ public class Reset : MonoBehaviour
 
     void Start()
     {
-        ResetText.SetActive(false);
+        if (ResetText != null)
+        {
+            ResetText.SetActive(false);
+        }
     }
     // UpdateŠÖ”‚Í–ˆƒtƒŒ[ƒ€ŒÄ‚Î‚ê‚é
     void Update()

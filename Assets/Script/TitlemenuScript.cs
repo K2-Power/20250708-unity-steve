@@ -11,7 +11,7 @@ public class TitlemenuScript : MonoBehaviour
     public UnityEngine.UI.Button button1;
     public GameObject menubutton;
     public GameObject menubutton1;
-    public GameObject tutorial;
+    //public GameObject tutorial;
     private RectTransform RectTransform_button;
     private RectTransform RectTransform_button1;
 
@@ -23,7 +23,7 @@ public class TitlemenuScript : MonoBehaviour
         button.Select();
         RectTransform_button = button.GetComponent<RectTransform>();
         RectTransform_button1 = button1.GetComponent<RectTransform>();
-        tutorial.SetActive(false);
+        //tutorial.SetActive(false);
         // 使用例
         // 位置移動の例
         // StartCoroutine(MovePosition(transform.position, transform.position + Vector3.right * 5f));
@@ -49,10 +49,10 @@ public class TitlemenuScript : MonoBehaviour
             Application.Quit();//ゲームプレイ終了
         #endif
     }
-    public void Activetutorial()
-    {
-        tutorial.gameObject.SetActive(true);
-    }
+    //public void Activetutorial()
+    //{
+    //    tutorial.gameObject.SetActive(true);
+    //}
     public void StringScenego(string s)
     {
         SceneManager.LoadScene(s);

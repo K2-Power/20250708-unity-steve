@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public GameObject ClonePlayer;
     public int CloneCount = 0;
     private Rigidbody2D rb;
+    private Rigidbody2D rb2;
     private bool isGrounded;
     public GameObject player2Prefab; // Player2のプレハブを指定
     public GameObject ShotPoint;
@@ -27,23 +28,34 @@ public class Player : MonoBehaviour
     private Vector3[] originalChildPositions;
     private float originalGravity;
     private float originalMass;
+    private bool onTheLift = false;
     void Start()
     {
         StoreOriginalChildPositions();
         instance = this;
         rb = GetComponent<Rigidbody2D>();  // Rigidbody2Dを取得
+        rb2 = player2Prefab.GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         originalGravity = rb.gravityScale;
         originalMass = rb.mass;
-
+        onTheLift = false;
     }
 
     void Update()
     {
+        if (onTheLift)
+        {
+            Debug.Log("LIFTON");
+        }
+        else
+        {
+            Debug.Log("LIFTOFF");
+        }
+
         //Gamepad.current?.SetMotorSpeeds(6.0f, 6.0f);
         if (isGrounded && animator)
         {
-            animator.SetBool("jumpFlag",false);
+            animator.SetBool("jumpFlag", false);
         }
         if (!isGrounded && animator)
         {
@@ -101,6 +113,12 @@ public class Player : MonoBehaviour
                     CloneCount--;
                     Instantiate(player2Prefab, ShotPoint.transform.position, Quaternion.identity);
                     //SoundManager.instance.PlaySE(0);
+                    if (onTheLift)
+                    {
+                        Vector2 vector2 = new Vector2(3,0);
+                        rb2.AddForce(vector2);
+                    }
+                    SoundManager.instance.PlaySE(0);
                 }
                 else
                 {
@@ -118,6 +136,11 @@ public class Player : MonoBehaviour
                 {
                     CloneCount--;
                     Instantiate(player2Prefab, ShotPoint.transform.position, Quaternion.identity);
+                    if (onTheLift)
+                    {
+                        Vector2 vector2 = new Vector2(3,0);
+                        rb2.AddForce(vector2);
+                    }
                     SoundManager.instance.PlaySE(0);
                 }
                 else
@@ -156,6 +179,7 @@ public class Player : MonoBehaviour
         if (collision.CompareTag("Lift"))
         {
             isGrounded = true;
+            onTheLift = false;
             if (LiftObject != null)
             {
                 if (Input.GetAxis("Horizontal") == 0.0f)
@@ -180,6 +204,7 @@ public class Player : MonoBehaviour
         if (collision.CompareTag("Lift"))
         {
             isGrounded = true;
+            onTheLift = false;
             if (LiftObject != null)
             {
                 if (Input.GetAxis("Horizontal") == 0.0f)
@@ -204,6 +229,7 @@ public class Player : MonoBehaviour
         if (collision.CompareTag("Lift"))
         {
             isGrounded = false;
+            onTheLift = false;
             if (LiftObject != null)
             {
                 transform.SetParent(null);
@@ -225,6 +251,7 @@ public class Player : MonoBehaviour
         {
             transform.SetParent(collision.transform);
             isGrounded = true;
+            onTheLift = true;
         }
         if (collision.gameObject.CompareTag("Conveyors"))
         {
@@ -249,6 +276,7 @@ public class Player : MonoBehaviour
         {
             transform.SetParent(collision.transform);
             isGrounded = true;
+            onTheLift = true;
         }
     }
     private void OnCollisionExit2D(Collision2D collision)
@@ -265,6 +293,7 @@ public class Player : MonoBehaviour
         {
             transform.SetParent(null);
             isGrounded = false;
+            onTheLift = false;
         }
         if (collision.gameObject.CompareTag("Conveyors"))
         {
