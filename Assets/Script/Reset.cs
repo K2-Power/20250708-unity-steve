@@ -14,7 +14,7 @@ public class Reset : MonoBehaviour
     // Update関数は毎フレーム呼ばれる
     void Update()
     {
-        if(player == null)
+        if (player == null)
         {
             ResetText.SetActive(true);
         }
@@ -25,6 +25,7 @@ public class Reset : MonoBehaviour
         // 「R」キーが押されたらリセット
         if (Input.GetKeyDown("joystick button 3")|| Input.GetKeyDown(KeyCode.R))
         {
+        
             ResetGame(); // リセット関数を呼び出す
         }
     }
