@@ -304,8 +304,8 @@ Transform:
   m_GameObject: {fileID: 67307702}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.62, y: 2.6519, z: 0}
-  m_LocalScale: {x: 0.45241186, y: 0.46353492, z: 0.44315}
+  m_LocalPosition: {x: 7.62, y: 3.0514, z: 0}
+  m_LocalScale: {x: 0.45241186, y: 0.3836594, z: 0.44315}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -956,7 +956,7 @@ GameObject:
   - component: {fileID: 401777444}
   m_Layer: 0
   m_Name: small_0
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1919,7 +1919,7 @@ GameObject:
   - component: {fileID: 778686080}
   m_Layer: 0
   m_Name: TYOUHOUKEI_0 (4)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2329,7 +2329,7 @@ GameObject:
   - component: {fileID: 877982817}
   m_Layer: 0
   m_Name: rihhuto_0
-  m_TagString: Untagged
+  m_TagString: Lift
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2535,7 +2535,7 @@ GameObject:
   - component: {fileID: 890194456}
   m_Layer: 0
   m_Name: TYOUHOUKEI_0 (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2811,7 +2811,7 @@ GameObject:
   - component: {fileID: 937827375}
   m_Layer: 0
   m_Name: TYOUHOUKEI_0 (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3315,7 +3315,7 @@ GameObject:
   - component: {fileID: 1032701991}
   m_Layer: 0
   m_Name: TYOUHOUKEI_0 (3)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3603,7 +3603,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1433069223714514598, guid: 8f7af2b688e4c0247a15f7ae2b38f3bd, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 3.45
+      value: 3.39
       objectReference: {fileID: 0}
     - target: {fileID: 1433069223714514598, guid: 8f7af2b688e4c0247a15f7ae2b38f3bd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4785,7 +4785,7 @@ GameObject:
   - component: {fileID: 1469855388}
   m_Layer: 0
   m_Name: TYOUHOUKEI_0
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4946,8 +4946,8 @@ Transform:
   m_GameObject: {fileID: 1469855387}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.1844, y: 1.567, z: 0}
-  m_LocalScale: {x: 0.5782431, y: 0.5212022, z: 0.43480194}
+  m_LocalPosition: {x: 4.0607, y: 1.567, z: 0}
+  m_LocalScale: {x: 0.5287455, y: 0.5212022, z: 0.43480194}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
