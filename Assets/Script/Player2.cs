@@ -37,14 +37,14 @@ public class Player2 : MonoBehaviour
         spriteRenderer.color = originalColor;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Conveyors"))
         {
             // Freeze Position X Çâèú
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
-        if (collision.CompareTag("Lift"))
+        if (collision.gameObject.CompareTag("Lift"))
         {
             if (LiftScript.instance.egofleezeX)
             {
@@ -54,7 +54,7 @@ public class Player2 : MonoBehaviour
             transform.SetParent(collision.transform);
         }
     }
-    void OnCollisionExit2D(Collision2D collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Conveyors"))
         {

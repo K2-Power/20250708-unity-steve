@@ -4763,6 +4763,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewLift
       objectReference: {fileID: 0}
+    - target: {fileID: 8212512622486528458, guid: 8bcbf6b9ff37b844f9a98e7622e38245, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
