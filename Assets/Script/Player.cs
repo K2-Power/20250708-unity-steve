@@ -46,15 +46,15 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (onTheLift)
-        {
-            Debug.Log("LIFTON");
-        }
-        else
-        {
-            Debug.Log("LIFTOFF");
-        }
-
+        //if (onTheLift)
+        //{
+        //    Debug.Log("LIFTON");
+        //}
+        //else
+        //{
+        //    Debug.Log("LIFTOFF");
+        //}
+        Debug.Log("PlayerVeloX" + rb.linearVelocityX.ToString());
         //Gamepad.current?.SetMotorSpeeds(6.0f, 6.0f);
         if (isGrounded && animator)
         {
@@ -80,7 +80,7 @@ public class Player : MonoBehaviour
             //rb.linearVelocityX = horizontal * (moveSpeed * Time.deltaTime); 
             rb.linearVelocityX = horizontal * moveSpeed;
             //rb.linearVelocity = movement;
-
+            
             // 自動反転が有効な場合
             if (autoFlipChildren)
             {
@@ -98,6 +98,7 @@ public class Player : MonoBehaviour
         }
         if (Mathf.Abs(horizontal) == 0.0f)
         {
+            rb.linearVelocityX = 0;
             if (animator)
             {
                 animator.SetBool("moveFlag", false);

@@ -3,6 +3,7 @@ using UnityEngine;
 public class Player2 : MonoBehaviour
 {
     public float lifetime = 5f; // 消えるまでの時間（秒）
+    public Collider2D Player;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [Header("点滅設定")]
     public float blinkSpeed = 2f;       // 点滅の速度
@@ -20,7 +21,8 @@ public class Player2 : MonoBehaviour
             spriteRenderer = GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
         rb = GetComponent<Rigidbody2D>();
-
+        Collider2D myCollider = rb.GetComponent<Collider2D>();
+        Physics2D.IgnoreCollision(myCollider,Player,true);
         // 指定時間後にこのオブジェクトを削除する
         Destroy(gameObject, lifetime);
     }
