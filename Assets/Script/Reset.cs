@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement; // シーンの管理に必要
 public class Reset : MonoBehaviour
 {
     public GameObject ResetText;
+    public GameObject RestartText;
     public GameObject player;
 
     void Start()
