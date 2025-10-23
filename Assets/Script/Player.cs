@@ -276,6 +276,10 @@ public class Player : MonoBehaviour
         {
             isGrounded = true;
         }
+        if (collision.gameObject.CompareTag("ego"))
+        {
+            isGrounded = true;
+        }
         if (collision.gameObject.CompareTag("Lift"))
         {
             transform.SetParent(collision.transform);
@@ -302,6 +306,10 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Conveyors"))
         {
             isGrounded = false;
+        }
+        if (collision.gameObject.CompareTag("ego"))
+        {
+            isGrounded = true;
         }
     }
 
