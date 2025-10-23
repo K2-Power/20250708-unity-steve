@@ -246,7 +246,14 @@ public class Player : MonoBehaviour
     {
         if (collision.collider.CompareTag("Ground"))
         {
-            isGrounded = true;
+            foreach (ContactPoint2D contact in collision.contacts)
+            {
+                // 接触点の法線をチェック（上方向＝地面）
+                if (contact.normal.y > 0.5f)
+                {
+                    isGrounded = true;
+                }
+            }
         }
         if (collision.collider.CompareTag("Button"))
         {
@@ -267,27 +274,40 @@ public class Player : MonoBehaviour
     {
         if (collision.collider.CompareTag("Ground"))
         {
-            isGrounded = true;
+            bool groundedNow = false;
+
+            foreach (ContactPoint2D contact in collision.contacts)
+            {
+                // 下方向の接触のみ地面扱い
+                if (contact.normal.y > 0.5f)
+                {
+                    groundedNow = true;
+                    break;
+                }
+            }
+            isGrounded = groundedNow;
         }
-        if (collision.collider.CompareTag("Button"))
-        {
-            isGrounded = true;
+            if (collision.collider.CompareTag("Button"))
+            {
+                isGrounded = true;
+            }
+            if (collision.gameObject.CompareTag("Conveyors"))
+            {
+                isGrounded = true;
+            }
+            if (collision.gameObject.CompareTag("ego"))
+            {
+                isGrounded = true;
+            }
+            if (collision.gameObject.CompareTag("Lift"))
+            {
+                transform.SetParent(collision.transform);
+                isGrounded = true;
+                onTheLift = true;
+            }
+
+            
         }
-        if (collision.gameObject.CompareTag("Conveyors"))
-        {
-            isGrounded = true;
-        }
-        if (collision.gameObject.CompareTag("ego"))
-        {
-            isGrounded = true;
-        }
-        if (collision.gameObject.CompareTag("Lift"))
-        {
-            transform.SetParent(collision.transform);
-            isGrounded = true;
-            onTheLift = true;
-        }
-    }
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Ground"))
