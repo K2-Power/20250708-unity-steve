@@ -1118,7 +1118,7 @@ PrefabInstance:
     - target: {fileID: 8718184644410469397, guid: b1544048132b39e469a10f498f1f8d7d, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 133140174}
+      objectReference: {fileID: 758702243}
     - target: {fileID: 8718184644410469397, guid: b1544048132b39e469a10f498f1f8d7d, type: 3}
       propertyPath: ResetText
       value: 
@@ -2228,7 +2228,7 @@ MonoBehaviour:
   ButtonObject:
   - {fileID: 1833196364}
   PlayerOREgo: 0
-  ALL: 0
+  ALL: 1
 --- !u!1 &1028889074
 GameObject:
   m_ObjectHideFlags: 0
