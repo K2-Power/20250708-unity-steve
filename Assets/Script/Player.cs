@@ -29,6 +29,9 @@ public class Player : MonoBehaviour
     private float originalGravity;
     private float originalMass;
     private bool onTheLift = false;
+    public GameObject[] clonePrefabs;   // クローンのプレハブを複数登録
+    private int currentCloneIndex = 0;  // 現在のクローン番号
+
     void Start()
     {
         StoreOriginalChildPositions();
@@ -106,48 +109,13 @@ public class Player : MonoBehaviour
         // 右クリック（マウス右ボタン）で生成
         if (Input.GetMouseButtonDown(1)) // 0=左, 1=右
         {
-            if (CloneCount > 0)
-            {
-                if (player2Prefab != null)
-                {
-                    CloneCount--;
-                    Instantiate(player2Prefab, ShotPoint.transform.position, Quaternion.identity);
-                    //SoundManager.instance.PlaySE(0);
-                    if (onTheLift)
-                    {
-                        Vector2 vector2 = new Vector2(3,0);
-                        rb2.AddForce(vector2);
-                    }
-                    SoundManager.instance.PlaySE(0);
-                }
-                else
-                {
-                    Debug.LogWarning("Player2プレハブが設定されていません！");
-                }
-            }
+            SpawnNextClone();
         }
 
         // 右クリック（マウス右ボタン）で生成
         if (Input.GetKeyDown("joystick button 2")) // 0=左, 1=右
         {
-            if (CloneCount > 0)
-            {
-                if (player2Prefab != null)
-                {
-                    CloneCount--;
-                    Instantiate(player2Prefab, ShotPoint.transform.position, Quaternion.identity);
-                    if (onTheLift)
-                    {
-                        Vector2 vector2 = new Vector2(3,0);
-                        rb2.AddForce(vector2);
-                    }
-                    SoundManager.instance.PlaySE(0);
-                }
-                else
-                {
-                    Debug.LogWarning("Player2プレハブが設定されていません！");
-                }
-            }
+            SpawnNextClone();
         }
         // ジャンプ（Spaceキー）
         if (Input.GetKeyDown("joystick button 0") && isGrounded)
@@ -162,6 +130,42 @@ public class Player : MonoBehaviour
 
     }
 
+    void SpawnNextClone()
+    {
+        if (CloneCount > 0)
+        {
+            // プレハブが正しく設定されていない場合は警告
+            if (clonePrefabs == null || clonePrefabs.Length == 0)
+            {
+                Debug.LogWarning("クローンのプレハブが設定されていません！");
+                return;
+            }
+
+            // 使用するプレハブを選択
+            GameObject prefab = clonePrefabs[currentCloneIndex];
+            currentCloneIndex = (currentCloneIndex + 1) % clonePrefabs.Length; // 次の順番へ
+
+            // 実際に生成
+            GameObject clone = Instantiate(prefab, ShotPoint.transform.position, Quaternion.identity);
+            CloneCount--;
+
+            // もしリフト上にいるなら追加の力を加える
+            if (onTheLift)
+            {
+                Rigidbody2D cloneRb = clone.GetComponent<Rigidbody2D>();
+                if (cloneRb != null)
+                {
+                    cloneRb.AddForce(new Vector2(3, 0));
+                }
+            }
+
+            SoundManager.instance.PlaySE(0);
+        }
+        else
+        {
+            Debug.Log("クローンが残っていません！");
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Ground"))
@@ -343,6 +347,3 @@ public class Player : MonoBehaviour
     }
 
 }
-
-
-
