@@ -255,6 +255,10 @@ public class Player : MonoBehaviour
                 }
             }
         }
+        if (collision.collider.CompareTag("Lift"))
+        {
+            transform.SetParent(collision.transform);  // Liftの子にする
+        }
         if (collision.collider.CompareTag("Button"))
         {
             isGrounded = true;
