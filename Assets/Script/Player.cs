@@ -297,13 +297,36 @@ public class Player : MonoBehaviour
             }
             if (collision.gameObject.CompareTag("ego"))
             {
-                isGrounded = true;
+            bool groundedNow = false;
+
+            foreach (ContactPoint2D contact in collision.contacts)
+            {
+                // 下方向の接触のみ地面扱い
+                if (contact.normal.y > 0.5f)
+                {
+                    groundedNow = true;
+                    break;
+                }
             }
+            isGrounded = groundedNow;
+        }
             if (collision.gameObject.CompareTag("Lift"))
             {
                 transform.SetParent(collision.transform);
                 isGrounded = true;
                 onTheLift = true;
+             bool groundedNow = false;
+
+            foreach (ContactPoint2D contact in collision.contacts)
+            {
+                // 下方向の接触のみ地面扱い
+                if (contact.normal.y > 0.5f)
+                {
+                    groundedNow = true;
+                    break;
+                }
+            }
+            isGrounded = groundedNow;
             }
 
             

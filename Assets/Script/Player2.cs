@@ -25,6 +25,16 @@ public class Player2 : MonoBehaviour
         Physics2D.IgnoreCollision(myCollider,Player,true);
         // 指定時間後にこのオブジェクトを削除する
         Destroy(gameObject, lifetime);
+        // PlayerのCollider取得
+        GameObject player = GameObject.FindWithTag("Player");
+        if (player != null)
+        {
+            Collider2D playerCol = player.GetComponent<Collider2D>();
+            Collider2D myCol = GetComponent<Collider2D>();
+
+            // Playerとの衝突を無視
+            Physics2D.IgnoreCollision(myCol, playerCol, true);
+        }
     }
     void Update()
     {
