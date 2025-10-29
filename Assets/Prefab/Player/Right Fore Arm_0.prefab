@@ -100,7 +100,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 74b856eedacb8804cb42e4cdfdf112ea, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 5
-  Player: {fileID: 7093016581003849452, guid: 5b0addcb7a4ab444f8c1af6b9022c88f, type: 3}
+  Player: {fileID: 7785919363866492761, guid: 5b0addcb7a4ab444f8c1af6b9022c88f, type: 3}
   spriteRenderer: {fileID: 0}
   blinkSpeed: 20
   minAlpha: 0.5

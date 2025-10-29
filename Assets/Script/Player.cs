@@ -319,7 +319,7 @@ public class Player : MonoBehaviour
                 transform.SetParent(collision.transform);
                 isGrounded = true;
                 onTheLift = true;
-             bool groundedNow = false;
+                bool groundedNow = false;
 
             foreach (ContactPoint2D contact in collision.contacts)
             {
