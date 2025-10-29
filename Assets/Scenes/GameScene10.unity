@@ -2095,6 +2095,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6541745790315871806, guid: 5b0addcb7a4ab444f8c1af6b9022c88f, type: 3}
+      propertyPath: MinusjumpForce
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6541745790315871806, guid: 5b0addcb7a4ab444f8c1af6b9022c88f, type: 3}
+      propertyPath: MinusmoveSpeed
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6541745790315871806, guid: 5b0addcb7a4ab444f8c1af6b9022c88f, type: 3}
       propertyPath: clonePrefabs.Array.size
       value: 6
       objectReference: {fileID: 0}
