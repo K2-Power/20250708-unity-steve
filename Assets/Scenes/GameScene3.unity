@@ -1412,6 +1412,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4924602059815720516, guid: 1472b7cbd9233a44ea16777639569fa4, type: 3}
   m_PrefabInstance: {fileID: 908353160}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &908353162 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8839608663888616397, guid: 1472b7cbd9233a44ea16777639569fa4, type: 3}
+  m_PrefabInstance: {fileID: 908353160}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &937361392
 GameObject:
   m_ObjectHideFlags: 0
@@ -1737,6 +1742,10 @@ PrefabInstance:
       propertyPath: ResetText
       value: 
       objectReference: {fileID: 908353161}
+    - target: {fileID: 8718184644410469397, guid: b1544048132b39e469a10f498f1f8d7d, type: 3}
+      propertyPath: RestartText
+      value: 
+      objectReference: {fileID: 908353162}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2811,7 +2820,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6541745790315871806, guid: 5b0addcb7a4ab444f8c1af6b9022c88f, type: 3}
       propertyPath: CloneCount
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6541745790315871806, guid: 5b0addcb7a4ab444f8c1af6b9022c88f, type: 3}
       propertyPath: MainPlayer

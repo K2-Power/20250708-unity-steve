@@ -14,17 +14,24 @@ public class Reset : MonoBehaviour
         {
             ResetText.SetActive(false);
         }
+        if (RestartText != null)
+        {
+            RestartText.SetActive(false);
+        }
     }
     // Update関数は毎フレーム呼ばれる
     void Update()
     {
         if (player == null)
         {
-            ResetText.SetActive(true);
+            ResetGame();
         }
         if (Player.instance.CloneCount <= 0)
         {
-            ResetText.SetActive(true);
+            if (GameObject.FindWithTag("ego") == null)
+            {
+                ResetText.SetActive(true);
+            }
         }
         // 「R」キーが押されたらリセット
         if (Input.GetKeyDown("joystick button 3")|| Input.GetKeyDown(KeyCode.R))

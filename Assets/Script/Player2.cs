@@ -14,9 +14,11 @@ public class Player2 : MonoBehaviour
 
     private Coroutine blinkCoroutine;
     private Color originalColor;
+    public static Player2 instance;
 
     void Start()
     {
+        instance = this;
         if (spriteRenderer == null)
             spriteRenderer = GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
@@ -50,6 +52,23 @@ public class Player2 : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Conveyors"))
+        {
+            // Freeze Position X Çâèú
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
+        if (collision.gameObject.CompareTag("Lift"))
+        {
+            if (LiftScript.instance.egofleezeX)
+            {
+                rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            }
+            //rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            transform.SetParent(collision.transform);
+        }
+    }
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Conveyors"))
         {
