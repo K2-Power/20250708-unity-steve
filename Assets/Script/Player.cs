@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 {
     public float moveSpeed = 5f;     // 左右の移動速度
     public float jumpForce = 7f;     // ジャンプの強さ
+    public float MinusjumpForce=0.3f;//減らすジャンプ力
     public LayerMask groundLayer;    // 地面のレイヤーを指定するためのフィールド
     public Transform groundCheck;    // 地面チェック用の位置（空オブジェクトを設定）
     public GameObject MainPlayer;
@@ -149,6 +150,7 @@ public class Player : MonoBehaviour
             // 実際に生成
             GameObject clone = Instantiate(prefab, ShotPoint.transform.position, Quaternion.identity);
             CloneCount--;
+            jumpForce -= MinusjumpForce;　//ジャンプ力を減らす
 
             // もしリフト上にいるなら追加の力を加える
             if (onTheLift)
