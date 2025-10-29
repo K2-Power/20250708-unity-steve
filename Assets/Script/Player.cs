@@ -9,8 +9,6 @@ public class Player : MonoBehaviour
     public float moveSpeed = 5f;     // 左右の移動速度
     public float jumpForce = 7f;     // ジャンプの強さ
     public float MinusmoveSpeed= 0.3f;//減らすジャンプ力
-    public LayerMask groundLayer;    // 地面のレイヤーを指定するためのフィールド
-    public Transform groundCheck;    // 地面チェック用の位置（空オブジェクトを設定）
     public GameObject MainPlayer;
     public GameObject ClonePlayer;
     public int CloneCount = 0;
