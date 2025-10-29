@@ -1334,24 +1334,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6541745790315871806, guid: 5b0addcb7a4ab444f8c1af6b9022c88f, type: 3}
       propertyPath: clonePrefabs.Array.size
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6541745790315871806, guid: 5b0addcb7a4ab444f8c1af6b9022c88f, type: 3}
       propertyPath: 'clonePrefabs.Array.data[0]'
       value: 
-      objectReference: {fileID: 5557643009684645780, guid: 8be1a9ac06a03224dba98eb2a7f440ec, type: 3}
+      objectReference: {fileID: 2081802989262479453, guid: 326adb120fa9b9747be41cbf1c9bd855, type: 3}
     - target: {fileID: 6541745790315871806, guid: 5b0addcb7a4ab444f8c1af6b9022c88f, type: 3}
       propertyPath: 'clonePrefabs.Array.data[1]'
       value: 
-      objectReference: {fileID: 845256678041483174, guid: c4dab639465c8834680fd4663d47c391, type: 3}
+      objectReference: {fileID: 4845594814144356109, guid: 25628de3c95698e458cc44bdec0c6d5e, type: 3}
     - target: {fileID: 6541745790315871806, guid: 5b0addcb7a4ab444f8c1af6b9022c88f, type: 3}
       propertyPath: 'clonePrefabs.Array.data[2]'
       value: 
-      objectReference: {fileID: 5507995421368049105, guid: bf95b12faa50a0f4085c19219c7b6898, type: 3}
+      objectReference: {fileID: 3803176481306235609, guid: 2c7b108ff24beb143abde9d0b6327aa4, type: 3}
     - target: {fileID: 6541745790315871806, guid: 5b0addcb7a4ab444f8c1af6b9022c88f, type: 3}
       propertyPath: 'clonePrefabs.Array.data[3]'
       value: 
-      objectReference: {fileID: 734918859537702806, guid: 74ea2f2828b654a4b83020175f273662, type: 3}
+      objectReference: {fileID: 6531964536692323043, guid: cb144424eed037742a0b68cf04b4e0ab, type: 3}
+    - target: {fileID: 6541745790315871806, guid: 5b0addcb7a4ab444f8c1af6b9022c88f, type: 3}
+      propertyPath: 'clonePrefabs.Array.data[4]'
+      value: 
+      objectReference: {fileID: 1693708656834009324, guid: 92ce7ae79de939047bbdb20e88f6f666, type: 3}
+    - target: {fileID: 6541745790315871806, guid: 5b0addcb7a4ab444f8c1af6b9022c88f, type: 3}
+      propertyPath: 'clonePrefabs.Array.data[5]'
+      value: 
+      objectReference: {fileID: 1400319167819972124, guid: 7bcf03f5d25406843841b201b5cf6109, type: 3}
     - target: {fileID: 7819837165076558292, guid: 5b0addcb7a4ab444f8c1af6b9022c88f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.61
