@@ -1369,6 +1369,10 @@ PrefabInstance:
       value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6541745790315871806, guid: 5b0addcb7a4ab444f8c1af6b9022c88f, type: 3}
+      propertyPath: fader
+      value: 
+      objectReference: {fileID: 1178392290}
+    - target: {fileID: 6541745790315871806, guid: 5b0addcb7a4ab444f8c1af6b9022c88f, type: 3}
       propertyPath: ShotPoint
       value: 
       objectReference: {fileID: 679280873}
@@ -1593,6 +1597,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9902747a901a1e044825b3dc64f8c31a, type: 3}
+--- !u!114 &1108349594 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6882206562210160984, guid: 1472b7cbd9233a44ea16777639569fa4, type: 3}
+  m_PrefabInstance: {fileID: 220324534}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39c3f1932feb60943bd82e3c698dade8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1178392286
 GameObject:
   m_ObjectHideFlags: 0
@@ -1604,6 +1619,7 @@ GameObject:
   - component: {fileID: 1178392289}
   - component: {fileID: 1178392288}
   - component: {fileID: 1178392287}
+  - component: {fileID: 1178392290}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -1672,6 +1688,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1178392290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178392286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d41f8db316a56649acc48d298079dd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_fade: {fileID: 1108349594}
+  m_fadeTime: 1
 --- !u!1001 &1779220079
 PrefabInstance:
   m_ObjectHideFlags: 0

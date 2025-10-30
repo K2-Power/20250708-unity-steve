@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 {
     public float moveSpeed = 5f;     // 左右の移動速度
     public float jumpForce = 7f;     // ジャンプの強さ
-    public float MinusmoveSpeed= 0.3f;//減らすジャンプ力
+    public float MinusmoveSpeed = 0.3f;//減らすジャンプ力
     public GameObject MainPlayer;
     public GameObject ClonePlayer;
     public int CloneCount = 0;
@@ -28,7 +28,10 @@ public class Player : MonoBehaviour
     private float originalGravity;
     private float originalMass;
     private bool onTheLift = false;
+    private bool CanMoveFlag = true;
     public GameObject[] clonePrefabs;   // クローンのプレハブを複数登録
+    public GameFadeScript fader;
+    private float fadeendtime = 0.0f;
     private int currentCloneIndex = 0;  // 現在のクローン番号
 
     void Start()
@@ -41,10 +44,16 @@ public class Player : MonoBehaviour
         originalGravity = rb.gravityScale;
         originalMass = rb.mass;
         onTheLift = false;
+        CanMoveFlag = true;
+        if (fader != null)
+        {
+            CanMoveFlag = false;
+        }
     }
 
     void Update()
     {
+        fadeendtime += Time.deltaTime;
         //if (onTheLift)
         //{
         //    Debug.Log("LIFTON");
@@ -53,7 +62,15 @@ public class Player : MonoBehaviour
         //{
         //    Debug.Log("LIFTOFF");
         //}
-        Debug.Log("PlayerVeloX" + rb.linearVelocityX.ToString());
+        if (fader != null)
+        {
+            if (fader.m_fadeTime - 0.5f <= fadeendtime)
+            {
+                CanMoveFlag = true;
+            }
+        }
+        //Debug.Log("PlayerVeloX" + rb.linearVelocityX.ToString());
+        Debug.Log("GroundFlag:" + isGrounded.ToString());
         //Gamepad.current?.SetMotorSpeeds(6.0f, 6.0f);
         if (isGrounded && animator)
         {
@@ -61,17 +78,17 @@ public class Player : MonoBehaviour
         }
         if (!isGrounded && animator)
         {
-            animator.SetBool("jumpFlag",true);
+            animator.SetBool("jumpFlag", true);
         }
         float horizontal = Input.GetAxis("Horizontal");
         float vert = Input.GetAxis("Vertical");
         //Debug.Log(horizontal);
         // 左右移動（A：左, D：右）
-        if (Mathf.Abs(horizontal) > 0.01f)
+        if (Mathf.Abs(horizontal) > 0.01f && CanMoveFlag)
         {
             if (animator)
             {
-                animator.SetBool("moveFlag",true);
+                animator.SetBool("moveFlag", true);
             }
             Vector3 movement = new Vector3(horizontal * (moveSpeed * Time.deltaTime), 0, 0);
             //transform.Translate(movement);
@@ -79,19 +96,19 @@ public class Player : MonoBehaviour
             //rb.linearVelocityX = horizontal * (moveSpeed * Time.deltaTime); 
             rb.linearVelocityX = horizontal * moveSpeed;
             //rb.linearVelocity = movement;
-            
+
             // 自動反転が有効な場合
             if (autoFlipChildren)
             {
                 // 右向きから左向きに変わった時
                 if (horizontal < -0.2f)
                 {
-                    transform.rotation = Quaternion.Euler(0,180,0);
+                    transform.rotation = Quaternion.Euler(0, 180, 0);
                 }
                 // 左向きから右向きに変わった時
                 else if (horizontal > 0.2f)
                 {
-                    transform.rotation = Quaternion.Euler(0, 0, 0);                    
+                    transform.rotation = Quaternion.Euler(0, 0, 0);
                 }
             }
         }
@@ -107,27 +124,28 @@ public class Player : MonoBehaviour
 
 
         // 右クリック（マウス右ボタン）で生成
-        if (Input.GetMouseButtonDown(1)) // 0=左, 1=右
+        if (CanMoveFlag)
         {
-            SpawnNextClone();
-        }
+            if (Input.GetMouseButtonDown(1)) // 0=左, 1=右
+            {
+                SpawnNextClone();
+            }
 
-        // 右クリック（マウス右ボタン）で生成
-        if (Input.GetKeyDown("joystick button 2")) // 0=左, 1=右
-        {
-            SpawnNextClone();
+            // 右クリック（マウス右ボタン）で生成
+            if (Input.GetKeyDown("joystick button 2")) // 0=左, 1=右
+            {
+                SpawnNextClone();
+            }
+            // ジャンプ（Spaceキー）
+            if (Input.GetKeyDown("joystick button 0") && isGrounded)
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            }
+            else if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            }
         }
-        // ジャンプ（Spaceキー）
-        if (Input.GetKeyDown("joystick button 0") && isGrounded)
-        {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-        }
-        else if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-        }
-
-
     }
 
     void SpawnNextClone()
@@ -184,7 +202,7 @@ public class Player : MonoBehaviour
         if (collision.CompareTag("Lift"))
         {
             isGrounded = true;
-            onTheLift = false;
+            onTheLift = true;
             if (LiftObject != null)
             {
                 if (Input.GetAxis("Horizontal") == 0.0f)
@@ -209,7 +227,7 @@ public class Player : MonoBehaviour
         if (collision.CompareTag("Lift"))
         {
             isGrounded = true;
-            onTheLift = false;
+            onTheLift = true;
             if (LiftObject != null)
             {
                 if (Input.GetAxis("Horizontal") == 0.0f)
@@ -278,6 +296,18 @@ public class Player : MonoBehaviour
     {
         if (collision.collider.CompareTag("Ground"))
         {
+            isGrounded = true;
+        }
+        if (collision.collider.CompareTag("Button"))
+        {
+            isGrounded = true;
+        }
+        if (collision.gameObject.CompareTag("Conveyors"))
+        {
+            isGrounded = true;
+        }
+        if (collision.gameObject.CompareTag("ego"))
+        {
             bool groundedNow = false;
 
             foreach (ContactPoint2D contact in collision.contacts)
@@ -291,50 +321,27 @@ public class Player : MonoBehaviour
             }
             isGrounded = groundedNow;
         }
-            if (collision.collider.CompareTag("Button"))
-            {
-                isGrounded = true;
-            }
-            if (collision.gameObject.CompareTag("Conveyors"))
-            {
-                isGrounded = true;
-            }
-            if (collision.gameObject.CompareTag("ego"))
-            {
-            bool groundedNow = false;
+        if (collision.gameObject.CompareTag("Lift"))
+        {
+            transform.SetParent(collision.transform);
+            isGrounded = true;
+            onTheLift = true;
+            //bool groundedNow = false;
 
-            foreach (ContactPoint2D contact in collision.contacts)
-            {
-                // 下方向の接触のみ地面扱い
-                if (contact.normal.y > 0.5f)
-                {
-                    groundedNow = true;
-                    break;
-                }
-            }
-            isGrounded = groundedNow;
+            //foreach (ContactPoint2D contact in collision.contacts)
+            //{
+            //    // 下方向の接触のみ地面扱い
+            //    if (contact.normal.y > 0.5f)
+            //    {
+            //        groundedNow = true;
+            //        break;
+            //    }
+            //}
+            //isGrounded = groundedNow;
         }
-            if (collision.gameObject.CompareTag("Lift"))
-            {
-                transform.SetParent(collision.transform);
-                isGrounded = true;
-                onTheLift = true;
-                bool groundedNow = false;
 
-            foreach (ContactPoint2D contact in collision.contacts)
-            {
-                // 下方向の接触のみ地面扱い
-                if (contact.normal.y > 0.5f)
-                {
-                    groundedNow = true;
-                    break;
-                }
-            }
-            isGrounded = groundedNow;
-            }
 
-            
-        }
+    }
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Ground"))
@@ -357,7 +364,7 @@ public class Player : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("ego"))
         {
-            isGrounded = true;
+            isGrounded = false;
         }
     }
 

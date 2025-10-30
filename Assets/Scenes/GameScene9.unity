@@ -2128,6 +2128,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Ground
       objectReference: {fileID: 0}
+    - target: {fileID: 7683416292840621589, guid: 1472b7cbd9233a44ea16777639569fa4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2138,6 +2142,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8839608663888616397, guid: 1472b7cbd9233a44ea16777639569fa4, type: 3}
   m_PrefabInstance: {fileID: 1133580391}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1133580393 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6882206562210160984, guid: 1472b7cbd9233a44ea16777639569fa4, type: 3}
+  m_PrefabInstance: {fileID: 1133580391}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39c3f1932feb60943bd82e3c698dade8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1157037777
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4120,6 +4135,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EventSystem
       objectReference: {fileID: 0}
+    - target: {fileID: 7161910715539803448, guid: 2675e58abcc856b4baf4481b0a782a55, type: 3}
+      propertyPath: m_fade
+      value: 
+      objectReference: {fileID: 1133580393}
     - target: {fileID: 8755489751031614203, guid: 2675e58abcc856b4baf4481b0a782a55, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4327,6 +4346,10 @@ PrefabInstance:
       value: 0.09407365
       objectReference: {fileID: 0}
     - target: {fileID: 6780864732307161616, guid: 8bcbf6b9ff37b844f9a98e7622e38245, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6780864732307161616, guid: 8bcbf6b9ff37b844f9a98e7622e38245, type: 3}
       propertyPath: m_Offset.x
       value: 0.0070972443
       objectReference: {fileID: 0}
@@ -4517,7 +4540,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8137642385246513752, guid: 9902747a901a1e044825b3dc64f8c31a, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
