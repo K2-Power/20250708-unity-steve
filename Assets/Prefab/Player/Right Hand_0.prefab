@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58850141b9097d74397d6eea696bb3ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 5
+  lifetime: 50000
   Player: {fileID: 7785919363866492761, guid: 5b0addcb7a4ab444f8c1af6b9022c88f, type: 3}
   spriteRenderer: {fileID: 0}
   blinkSpeed: 20

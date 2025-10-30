@@ -201,6 +201,7 @@ public class Player : MonoBehaviour
         }
         if (collision.CompareTag("Lift"))
         {
+            Destroy(GetComponent<Rigidbody2D>());
             isGrounded = true;
             onTheLift = true;
             if (LiftObject != null)
@@ -230,6 +231,7 @@ public class Player : MonoBehaviour
         }
         if (collision.CompareTag("Lift"))
         {
+            Destroy(rb); // Rigidbody2Dを削除
             isGrounded = true;
             onTheLift = true;
             if (LiftObject != null)
@@ -259,6 +261,7 @@ public class Player : MonoBehaviour
         }
         if (collision.CompareTag("Lift"))
         {
+            rb = gameObject.AddComponent<Rigidbody2D>(); // Rigidbody2Dを復活
             isGrounded = false;
             onTheLift = false;
             if (LiftObject != null)
