@@ -212,6 +212,10 @@ public class Player : MonoBehaviour
                 transform.SetParent(LiftObject.transform);
             }
         }
+        if (collision.CompareTag("Finish"))
+        {
+            CanMoveFlag = false;
+        }
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -236,6 +240,10 @@ public class Player : MonoBehaviour
                 }
                 transform.SetParent(LiftObject.transform);
             }
+        }
+        if (collision.CompareTag("Finish"))
+        {
+            CanMoveFlag = false;
         }
     }
 
@@ -291,6 +299,10 @@ public class Player : MonoBehaviour
         {
             isGrounded = true;
         }
+        if (collision.gameObject.CompareTag("Finish"))
+        {
+            CanMoveFlag = false;
+        }
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
@@ -339,7 +351,10 @@ public class Player : MonoBehaviour
             //}
             //isGrounded = groundedNow;
         }
-
+        if (collision.gameObject.CompareTag("Finish"))
+        {
+            CanMoveFlag = false;
+        }
 
     }
     private void OnCollisionExit2D(Collision2D collision)
@@ -409,4 +424,12 @@ public class Player : MonoBehaviour
         rb.mass = originalMass;
     }
 
+    public void Canmove()
+    {
+        CanMoveFlag = true;
+    }
+    public void Cannotmove()
+    {
+        CanMoveFlag = false;
+    }
 }
