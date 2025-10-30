@@ -224,10 +224,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CloneCount 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1690760722826129949, guid: 1472b7cbd9233a44ea16777639569fa4, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4257400758920268619, guid: 1472b7cbd9233a44ea16777639569fa4, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2070,10 +2066,6 @@ PrefabInstance:
     - target: {fileID: 6411006730994688509, guid: b1544048132b39e469a10f498f1f8d7d, type: 3}
       propertyPath: m_Name
       value: ResetObj
-      objectReference: {fileID: 0}
-    - target: {fileID: 6411006730994688509, guid: b1544048132b39e469a10f498f1f8d7d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8718184644410469397, guid: b1544048132b39e469a10f498f1f8d7d, type: 3}
       propertyPath: player
