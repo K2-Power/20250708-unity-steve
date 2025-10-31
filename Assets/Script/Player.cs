@@ -201,7 +201,6 @@ public class Player : MonoBehaviour
         }
         if (collision.CompareTag("Lift"))
         {
-            Destroy(GetComponent<Rigidbody2D>());
             isGrounded = true;
             onTheLift = true;
             if (LiftObject != null)
@@ -231,7 +230,6 @@ public class Player : MonoBehaviour
         }
         if (collision.CompareTag("Lift"))
         {
-            Destroy(rb); // Rigidbody2Dを削除
             isGrounded = true;
             onTheLift = true;
             if (LiftObject != null)
@@ -261,7 +259,6 @@ public class Player : MonoBehaviour
         }
         if (collision.CompareTag("Lift"))
         {
-            rb = gameObject.AddComponent<Rigidbody2D>(); // Rigidbody2Dを復活
             isGrounded = false;
             onTheLift = false;
             if (LiftObject != null)
@@ -283,10 +280,6 @@ public class Player : MonoBehaviour
                     isGrounded = true;
                 }
             }
-        }
-        if (collision.collider.CompareTag("Lift"))
-        {
-            transform.SetParent(collision.transform);  // Liftの子にする
         }
         if (collision.collider.CompareTag("Button"))
         {
@@ -341,18 +334,18 @@ public class Player : MonoBehaviour
             transform.SetParent(collision.transform);
             isGrounded = true;
             onTheLift = true;
-            //bool groundedNow = false;
+            bool groundedNow = false;
 
-            //foreach (ContactPoint2D contact in collision.contacts)
-            //{
-            //    // 下方向の接触のみ地面扱い
-            //    if (contact.normal.y > 0.5f)
-            //    {
-            //        groundedNow = true;
-            //        break;
-            //    }
-            //}
-            //isGrounded = groundedNow;
+            foreach (ContactPoint2D contact in collision.contacts)
+            {
+                // 下方向の接触のみ地面扱い
+                if (contact.normal.y > 0.5f)
+                {
+                    groundedNow = true;
+                    break;
+                }
+            }
+            isGrounded = groundedNow;
         }
         if (collision.gameObject.CompareTag("Finish"))
         {
@@ -399,34 +392,6 @@ public class Player : MonoBehaviour
             originalChildPositions[i] = childTransforms[i].localPosition;
         }
     }
-
-    void FlipChildren()
-    {
-        for (int i = 0; i < childTransforms.Length; i++)
-        {
-            if (childTransforms[i] != null)
-            {
-                Vector3 flippedPosition = childTransforms[i].localPosition;
-                Quaternion flippedRotation = childTransforms[i].rotation;
-                flippedRotation.z = -flippedRotation.z;
-                flippedPosition.x = -flippedPosition.x;
-                childTransforms[i].localPosition = flippedPosition;
-                childTransforms[i].rotation = flippedRotation;
-            }
-        }
-    }
-
-    public void EnterWind(float newGravity, float newMass)
-    {
-        rb.gravityScale = newGravity;
-        rb.mass = newMass;
-    }
-    public void ExitWind()
-    {
-        rb.gravityScale = originalGravity;
-        rb.mass = originalMass;
-    }
-
     public void Canmove()
     {
         CanMoveFlag = true;

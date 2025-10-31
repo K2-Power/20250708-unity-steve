@@ -239,13 +239,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 856dc758a20ea20458bb849de75ad40d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetObject: {fileID: 0}
-  duration: 3
-  menuopen: 0
-  button: {fileID: 1410829937}
-  button1: {fileID: 2029025294}
-  menubutton: {fileID: 1355059884}
-  menubutton1: {fileID: 1145945639}
 --- !u!1 &346401160
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,7 +751,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 285175693}
         m_TargetAssemblyTypeName: TitlemenuScript, Assembly-CSharp
-        m_MethodName: StringScenego
+        m_MethodName: StringArgFunction
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
