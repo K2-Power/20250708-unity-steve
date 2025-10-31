@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     public int CloneCount = 0;
     private Rigidbody2D rb;
     private Rigidbody2D rb2;
-    private bool isGrounded;
+    public bool isGrounded;
     public GameObject player2Prefab; // Player2のプレハブを指定
     public GameObject ShotPoint;
     public GameObject ResetText;
@@ -33,6 +33,8 @@ public class Player : MonoBehaviour
     public GameFadeScript fader;
     private float fadeendtime = 0.0f;
     private int currentCloneIndex = 0;  // 現在のクローン番号
+    private FixedJoint2D joint;
+
 
     void Start()
     {
@@ -70,7 +72,7 @@ public class Player : MonoBehaviour
             }
         }
         //Debug.Log("PlayerVeloX" + rb.linearVelocityX.ToString());
-        Debug.Log("GroundFlag:" + isGrounded.ToString());
+        //Debug.Log("GroundFlag:" + isGrounded.ToString());
         //Gamepad.current?.SetMotorSpeeds(6.0f, 6.0f);
         if (isGrounded && animator)
         {
@@ -199,19 +201,19 @@ public class Player : MonoBehaviour
         {
             isGrounded = true;
         }
-        if (collision.CompareTag("Lift"))
-        {
-            isGrounded = true;
-            onTheLift = true;
-            if (LiftObject != null)
-            {
-                if (Input.GetAxis("Horizontal") == 0.0f)
-                {
-                    rb.linearVelocityX = 0.0f;
-                }
-                transform.SetParent(LiftObject.transform);
-            }
-        }
+        //if (collision.CompareTag("Lift"))
+        //{
+        //    isGrounded = true;
+        //    onTheLift = true;
+        //    if (LiftObject != null)
+        //    {
+        //        if (Input.GetAxis("Horizontal") == 0.0f)
+        //        {
+        //            rb.linearVelocityX = 0.0f;
+        //        }
+        //        transform.SetParent(LiftObject.transform);
+        //    }
+        //}
         if (collision.CompareTag("Finish"))
         {
             CanMoveFlag = false;
@@ -228,19 +230,20 @@ public class Player : MonoBehaviour
         {
             isGrounded = true;
         }
-        if (collision.CompareTag("Lift"))
-        {
-            isGrounded = true;
-            onTheLift = true;
-            if (LiftObject != null)
-            {
-                if (Input.GetAxis("Horizontal") == 0.0f)
-                {
-                    rb.linearVelocityX = 0.0f;
-                }
-                transform.SetParent(LiftObject.transform);
-            }
-        }
+        //if (collision.CompareTag("Lift"))
+        //{
+
+        //    isGrounded = true;
+        //    onTheLift = true;
+        //    if (LiftObject != null)
+        //    {
+        //        if (Input.GetAxis("Horizontal") == 0.0f)
+        //        {
+        //            rb.linearVelocityX = 0.0f;
+        //        }
+        //        transform.SetParent(LiftObject.transform);
+        //    }
+        //}
         if (collision.CompareTag("Finish"))
         {
             CanMoveFlag = false;
@@ -257,15 +260,15 @@ public class Player : MonoBehaviour
         {
             isGrounded = false;
         }
-        if (collision.CompareTag("Lift"))
-        {
-            isGrounded = false;
-            onTheLift = false;
-            if (LiftObject != null)
-            {
-                transform.SetParent(null);
-            }
-        }
+        //if (collision.CompareTag("Lift"))
+        //{
+        //    isGrounded = false;
+        //    onTheLift = false;
+        //    if (LiftObject != null)
+        //    {
+        //        transform.SetParent(null);
+        //    }
+        //}
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -287,6 +290,7 @@ public class Player : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Lift"))
         {
+
             transform.SetParent(collision.transform);
             isGrounded = true;
             onTheLift = true;
@@ -331,21 +335,22 @@ public class Player : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Lift"))
         {
+            Debug.Log("リフトに衝突しました!!");
             transform.SetParent(collision.transform);
             isGrounded = true;
             onTheLift = true;
-            bool groundedNow = false;
+            //bool groundedNow = false;
 
-            foreach (ContactPoint2D contact in collision.contacts)
-            {
-                // 下方向の接触のみ地面扱い
-                if (contact.normal.y > 0.5f)
-                {
-                    groundedNow = true;
-                    break;
-                }
-            }
-            isGrounded = groundedNow;
+            //foreach (ContactPoint2D contact in collision.contacts)
+            //{
+            //    // 下方向の接触のみ地面扱い
+            //    if (contact.normal.y > 0.5f)
+            //    {
+            //        groundedNow = true;
+            //        break;
+            //    }
+            //}
+            //isGrounded = groundedNow;
         }
         if (collision.gameObject.CompareTag("Finish"))
         {
