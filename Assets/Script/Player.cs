@@ -34,6 +34,8 @@ public class Player : MonoBehaviour
     private float fadeendtime = 0.0f;
     private int currentCloneIndex = 0;  // 現在のクローン番号
     private FixedJoint2D joint;
+    public float groundedCheckDelay = 0.1f; // 接地判定の遅延時間
+    private float lastGroundedTime = 0f;
 
 
     void Start()
@@ -64,6 +66,11 @@ public class Player : MonoBehaviour
         //{
         //    Debug.Log("LIFTOFF");
         //}
+        if (isGrounded)
+        {
+            lastGroundedTime = Time.time;
+        }
+        bool effectivelyGrounded = (Time.time - lastGroundedTime) < groundedCheckDelay;
         if (fader != null)
         {
             if (fader.m_fadeTime - 0.5f <= fadeendtime)
@@ -74,57 +81,54 @@ public class Player : MonoBehaviour
         //Debug.Log("PlayerVeloX" + rb.linearVelocityX.ToString());
         //Debug.Log("GroundFlag:" + isGrounded.ToString());
         //Gamepad.current?.SetMotorSpeeds(6.0f, 6.0f);
-        if (isGrounded && animator)
+        if (animator)
         {
-            animator.SetBool("jumpFlag", false);
+            // リフトに乗っている場合はジャンプアニメーションを抑制
+            animator.SetBool("jumpFlag", !effectivelyGrounded);
         }
-        if (!isGrounded && animator)
+        if (CanMoveFlag)
         {
-            animator.SetBool("jumpFlag", true);
-        }
-        float horizontal = Input.GetAxis("Horizontal");
-        float vert = Input.GetAxis("Vertical");
-        //Debug.Log(horizontal);
-        // 左右移動（A：左, D：右）
-        if (Mathf.Abs(horizontal) > 0.01f && CanMoveFlag)
-        {
-            if (animator)
+            float horizontal = Input.GetAxis("Horizontal");
+            float vert = Input.GetAxis("Vertical");
+            //Debug.Log(horizontal);
+            // 左右移動（A：左, D：右）
+            if (Mathf.Abs(horizontal) > 0.01f && CanMoveFlag)
             {
-                animator.SetBool("moveFlag", true);
-            }
-            Vector3 movement = new Vector3(horizontal * (moveSpeed * Time.deltaTime), 0, 0);
-            //transform.Translate(movement);
-            //rb.linearVelocityX = movement.x;
-            //rb.linearVelocityX = horizontal * (moveSpeed * Time.deltaTime); 
-            rb.linearVelocityX = horizontal * moveSpeed;
-            //rb.linearVelocity = movement;
-
-            // 自動反転が有効な場合
-            if (autoFlipChildren)
-            {
-                // 右向きから左向きに変わった時
-                if (horizontal < -0.2f)
+                if (animator)
                 {
-                    transform.rotation = Quaternion.Euler(0, 180, 0);
+                    animator.SetBool("moveFlag", true);
                 }
-                // 左向きから右向きに変わった時
-                else if (horizontal > 0.2f)
+                Vector3 movement = new Vector3(horizontal * (moveSpeed * Time.deltaTime), 0, 0);
+                //transform.Translate(movement);
+                //rb.linearVelocityX = movement.x;
+                //rb.linearVelocityX = horizontal * (moveSpeed * Time.deltaTime); 
+                rb.linearVelocityX = horizontal * moveSpeed;
+                //rb.linearVelocity = movement;
+
+                // 自動反転が有効な場合
+                if (autoFlipChildren)
                 {
-                    transform.rotation = Quaternion.Euler(0, 0, 0);
+                    // 右向きから左向きに変わった時
+                    if (horizontal < -0.2f)
+                    {
+                        transform.rotation = Quaternion.Euler(0, 180, 0);
+                    }
+                    // 左向きから右向きに変わった時
+                    else if (horizontal > 0.2f)
+                    {
+                        transform.rotation = Quaternion.Euler(0, 0, 0);
+                    }
+                }
+            }
+            if (Mathf.Abs(horizontal) == 0.0f)
+            {
+                rb.linearVelocityX = 0;
+                if (animator)
+                {
+                    animator.SetBool("moveFlag", false);
                 }
             }
         }
-        if (Mathf.Abs(horizontal) == 0.0f)
-        {
-            rb.linearVelocityX = 0;
-            if (animator)
-            {
-                animator.SetBool("moveFlag", false);
-            }
-        }
-
-
-
         // 右クリック（マウス右ボタン）で生成
         if (CanMoveFlag)
         {
@@ -290,7 +294,6 @@ public class Player : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Lift"))
         {
-
             transform.SetParent(collision.transform);
             isGrounded = true;
             onTheLift = true;
