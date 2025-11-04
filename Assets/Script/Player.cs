@@ -311,7 +311,18 @@ public class Player : MonoBehaviour
     {
         if (collision.collider.CompareTag("Ground"))
         {
-            isGrounded = true;
+            foreach (ContactPoint2D contact in collision.contacts)
+            {
+                // 接触点の法線をチェック（上方向＝地面）
+                if (contact.normal.y < 0.6f)
+                {
+                    isGrounded = false;
+                }
+                else
+                {
+                    isGrounded = true;
+                }
+            }
         }
         if (collision.collider.CompareTag("Button"))
         {
