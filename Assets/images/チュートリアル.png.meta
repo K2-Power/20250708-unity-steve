@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 5e6f51588ec27b6458621b2ca8043bff
+guid: 351493cd80fdaa54c9c7331df7764ffd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5321998737548977285
-    second: rift_0
+      213: -2155970453367365409
+    second: "\u30C1\u30E5\u30FC\u30C8\u30EA\u30A2\u30EB_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: rift_0
+      name: "\u30C1\u30E5\u30FC\u30C8\u30EA\u30A2\u30EB_0"
       rect:
         serializedVersion: 2
-        x: 1051
-        y: 972
-        width: 868
-        height: 156
+        x: 0
+        y: 0
+        width: 1980
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b7bd05968567426b0800000000000000
-      internalID: -5321998737548977285
+      spriteID: fd0ecc4ab447412e0800000000000000
+      internalID: -2155970453367365409
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      rift_0: -5321998737548977285
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
