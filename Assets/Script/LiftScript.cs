@@ -272,7 +272,6 @@ public class LiftScript : MonoBehaviour
             }
         }
 
-        // ���݂̈ړ�������\��
         if (Application.isPlaying)
         {
             Gizmos.color = Color.red;
