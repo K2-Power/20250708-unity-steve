@@ -2497,17 +2497,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.020615578, y: 0}
+  m_Offset: {x: -0.029220581, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 11.080617, y: 1.3999999}
+    oldSize: {x: 8.680484, y: 1.5599998}
     newSize: {x: 11.080617, y: 1.3999999}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 11.3112335, y: 1.3999999}
+  m_Size: {x: 8.747034, y: 1.3999999}
   m_EdgeRadius: 0
 --- !u!61 &877982819
 BoxCollider2D:
@@ -2543,17 +2543,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.6738411}
+  m_Offset: {x: -0.008604765, y: 0.6738411}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 11.080617, y: 1.3999999}
+    oldSize: {x: 8.680484, y: 1.5599998}
     newSize: {x: 11.080617, y: 1.3999999}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 11.080617, y: 0.28093553}
+  m_Size: {x: 8.516418, y: 0.28093553}
   m_EdgeRadius: 0
 --- !u!212 &877982820
 SpriteRenderer:
@@ -2599,7 +2599,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5835754884268393261, guid: 18598a2a3549d79469ae132e557a885f, type: 3}
+  m_Sprite: {fileID: -5321998737548977285, guid: 5e6f51588ec27b6458621b2ca8043bff, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2619,8 +2619,8 @@ Transform:
   m_GameObject: {fileID: 877982816}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.16, y: -4.76, z: 0}
-  m_LocalScale: {x: 0.3313128, y: 0.4609, z: 1}
+  m_LocalPosition: {x: -4.1565, y: -4.76, z: 0}
+  m_LocalScale: {x: 0.40819335, y: 0.4609, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -4423,17 +4423,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.04159546, y: -0.03611207}
+  m_Offset: {x: -0.008859634, y: -0.03611207}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 11.080617, y: 1.3999999}
+    oldSize: {x: 8.680484, y: 1.5599998}
     newSize: {x: 11.080617, y: 1.3999999}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 11.454985, y: 1.3277757}
+  m_Size: {x: 8.737862, y: 1.3277757}
   m_EdgeRadius: 0
 --- !u!61 &1410180610
 BoxCollider2D:
@@ -4469,17 +4469,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.6483709}
+  m_Offset: {x: -0.090025425, y: 0.6483709}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 11.080617, y: 1.3999999}
+    oldSize: {x: 8.680484, y: 1.5599998}
     newSize: {x: 11.080617, y: 1.3999999}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 11.080617, y: 0.22999513}
+  m_Size: {x: 8.379863, y: 0.22999513}
   m_EdgeRadius: 0
 --- !u!212 &1410180611
 SpriteRenderer:
@@ -4525,7 +4525,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5835754884268393261, guid: 18598a2a3549d79469ae132e557a885f, type: 3}
+  m_Sprite: {fileID: -5321998737548977285, guid: 5e6f51588ec27b6458621b2ca8043bff, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4545,8 +4545,8 @@ Transform:
   m_GameObject: {fileID: 1410180607}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: -0.38, z: 0}
-  m_LocalScale: {x: 0.18411149, y: 0.4829771, z: 1}
+  m_LocalPosition: {x: -1.0654, y: -0.38, z: 0}
+  m_LocalScale: {x: 0.2644543, y: 0.4829771, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
