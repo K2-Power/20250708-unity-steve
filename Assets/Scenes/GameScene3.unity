@@ -1459,6 +1459,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CloneCount 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1690760722826129949, guid: 1472b7cbd9233a44ea16777639569fa4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4257400758920268619, guid: 1472b7cbd9233a44ea16777639569fa4, type: 3}
       propertyPath: m_IsActive
       value: 0

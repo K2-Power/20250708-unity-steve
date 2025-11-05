@@ -226,12 +226,6 @@ public class EnemyScript : MonoBehaviour
         movementPoints = newPoints;
     }
 
-    // 移動を一時停止/再開するメソッド
-    public void SetMovementEnabled(bool enabled)
-    {
-        isMoving = enabled;
-    }
-
     // 特定のポイントから移動を開始
     public void StartFromPoint(int pointIndex)
     {
@@ -324,28 +318,6 @@ public class EnemyScript : MonoBehaviour
         {
             Gizmos.color = Color.red;
             Gizmos.DrawRay(transform.position, currentDirection * 2f);
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("ego"))
-        {
-            SetMovementEnabled(false);
-        }
-    }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.CompareTag("ego"))
-        {
-            SetMovementEnabled(false);
-        }
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("ego"))
-        {
-            SetMovementEnabled(true);
         }
     }
 
