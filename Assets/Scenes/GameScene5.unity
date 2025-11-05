@@ -1060,7 +1060,7 @@ MonoBehaviour:
   ButtonObject:
   - {fileID: 714529399}
   PlayerOREgo: 0
-  ALL: 0
+  ALL: 1
 --- !u!61 &459827060
 BoxCollider2D:
   m_ObjectHideFlags: 0

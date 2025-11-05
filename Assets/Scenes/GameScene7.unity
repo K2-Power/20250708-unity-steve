@@ -999,7 +999,7 @@ MonoBehaviour:
   ButtonObject:
   - {fileID: 993425295}
   PlayerOREgo: 0
-  ALL: 0
+  ALL: 1
 --- !u!1 &438695999
 GameObject:
   m_ObjectHideFlags: 0

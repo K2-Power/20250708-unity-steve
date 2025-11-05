@@ -3,10 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class TitlemenuScript : MonoBehaviour
 {
+    public UnityEngine.UI.Button button;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        button.Select();
     }
 
     // Update is called once per frame
