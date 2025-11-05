@@ -8,10 +8,12 @@ public class VideoEndScript : MonoBehaviour
     public static VideoEndScript instance;
     [SerializeField]
     private Fade m_fade = null;
+    public Fade m_fade1 = null;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         instance = this;
+        m_fade1.FadeIn(1.0f);
         videoPlayer.loopPointReached += screendelete;
     }
 

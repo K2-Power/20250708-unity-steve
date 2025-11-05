@@ -129,6 +129,12 @@ public class Player : MonoBehaviour
                 }
             }
         }
+        if (!CanMoveFlag)
+        {
+            rb.linearVelocityX *= 0;
+            animator.SetBool("moveFlag", false);
+            animator.SetBool("jumpFlag", false);
+        }
         // 右クリック（マウス右ボタン）で生成
         if (CanMoveFlag)
         {
