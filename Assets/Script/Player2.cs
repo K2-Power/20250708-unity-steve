@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class Player2 : MonoBehaviour
 {
-    public float lifetime = 5f; // Á‚¦‚é‚Ü‚Å‚ÌŠÔi•bj
+    public float lifetime = 5f; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü‚Å‚Ìï¿½ï¿½Ôiï¿½bï¿½j
     public Collider2D Player;
     [SerializeField] private SpriteRenderer spriteRenderer;
-    [Header("“_–Åİ’è")]
-    public float blinkSpeed = 2f;       // “_–Å‚Ì‘¬“x
-    public float minAlpha = 0f;         // Å¬“§–¾“x
-    public float maxAlpha = 1f;         // Å‘å“§–¾“x
+    [Header("ï¿½_ï¿½Åİ’ï¿½")]
+    public float blinkSpeed = 2f;       // ï¿½_ï¿½Å‚Ì‘ï¿½ï¿½x
+    public float minAlpha = 0f;         // ï¿½Åï¿½ï¿½ï¿½ï¿½ï¿½ï¿½x
+    public float maxAlpha = 1f;         // ï¿½Å‘å“§ï¿½ï¿½ï¿½x
     public float blinkStartTime = 2f;
     private Rigidbody2D rb;
 
@@ -25,16 +25,16 @@ public class Player2 : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         Collider2D myCollider = rb.GetComponent<Collider2D>();
         Physics2D.IgnoreCollision(myCollider,Player,true);
-        // w’èŠÔŒã‚É‚±‚ÌƒIƒuƒWƒFƒNƒg‚ğíœ‚·‚é
+        // ï¿½wï¿½èï¿½ÔŒï¿½É‚ï¿½ï¿½ÌƒIï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ï¿½ï¿½íœï¿½ï¿½ï¿½ï¿½
         Destroy(gameObject, lifetime);
-        // Player‚ÌCollideræ“¾
+        // Playerï¿½ï¿½Colliderï¿½æ“¾
         GameObject player = GameObject.FindWithTag("Player");
         if (player != null)
         {
             Collider2D playerCol = player.GetComponent<Collider2D>();
             Collider2D myCol = GetComponent<Collider2D>();
 
-            // Player‚Æ‚ÌÕ“Ë‚ğ–³‹
+            // Playerï¿½Æ‚ÌÕ“Ë‚ğ–³ï¿½
             Physics2D.IgnoreCollision(myCol, playerCol, true);
         }
     }
@@ -55,7 +55,7 @@ public class Player2 : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Conveyors"))
         {
-            // Freeze Position X ‚ğ‰ğœ
+            // Freeze Position X ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
         if (collision.gameObject.CompareTag("Lift"))
@@ -72,7 +72,7 @@ public class Player2 : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Conveyors"))
         {
-            // Freeze Position X ‚ğ‰ğœ
+            // Freeze Position X ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
         if (collision.gameObject.CompareTag("Lift"))
@@ -89,7 +89,7 @@ public class Player2 : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Conveyors"))
         {
-            // Ä‚Ñ Freeze Position X ‚ğ—LŒø‰»
+            // ï¿½Ä‚ï¿½ Freeze Position X ï¿½ï¿½Lï¿½ï¿½ï¿½ï¿½
             rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
         }
         if (collision.gameObject.CompareTag("Lift"))
@@ -100,6 +100,14 @@ public class Player2 : MonoBehaviour
             }
             //rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
             transform.SetParent(null);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Lift"))
+        {
+            transform.SetParent(collision.transform);
         }
     }
 

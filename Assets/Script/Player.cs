@@ -240,20 +240,6 @@ public class Player : MonoBehaviour
         {
             isGrounded = true;
         }
-        //if (collision.CompareTag("Lift"))
-        //{
-
-        //    isGrounded = true;
-        //    onTheLift = true;
-        //    if (LiftObject != null)
-        //    {
-        //        if (Input.GetAxis("Horizontal") == 0.0f)
-        //        {
-        //            rb.linearVelocityX = 0.0f;
-        //        }
-        //        transform.SetParent(LiftObject.transform);
-        //    }
-        //}
         if (collision.CompareTag("Finish"))
         {
             CanMoveFlag = false;
@@ -270,15 +256,6 @@ public class Player : MonoBehaviour
         {
             isGrounded = false;
         }
-        //if (collision.CompareTag("Lift"))
-        //{
-        //    isGrounded = false;
-        //    onTheLift = false;
-        //    if (LiftObject != null)
-        //    {
-        //        transform.SetParent(null);
-        //    }
-        //}
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -359,18 +336,6 @@ public class Player : MonoBehaviour
             transform.SetParent(collision.transform);
             isGrounded = true;
             onTheLift = true;
-            //bool groundedNow = false;
-
-            //foreach (ContactPoint2D contact in collision.contacts)
-            //{
-            //    // 下方向の接触のみ地面扱い
-            //    if (contact.normal.y > 0.5f)
-            //    {
-            //        groundedNow = true;
-            //        break;
-            //    }
-            //}
-            //isGrounded = groundedNow;
         }
         if (collision.gameObject.CompareTag("Finish"))
         {
