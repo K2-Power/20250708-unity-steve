@@ -1,7 +1,9 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 
 public class Player : MonoBehaviour
@@ -36,7 +38,7 @@ public class Player : MonoBehaviour
     private FixedJoint2D joint;
     public float groundedCheckDelay = 0.1f; // 接地判定の遅延時間
     private float lastGroundedTime = 0f;
-
+    private bool isDying = false; // 死亡中フラグ
 
     void Start()
     {
@@ -55,9 +57,38 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void PlayDeathAnimation()
+    {
+        if (animator && !isDying)
+        {
+            isDying = true;
+            CanMoveFlag = false; // 操作を無効化
+            animator.SetBool("DeadFlag", true);
+            Debug.Log("死亡アニメーション再生します");
+        }
+    }
+
     void Update()
     {
         fadeendtime += Time.deltaTime;
+        // 死亡アニメーションが再生中なら監視
+        if (isDying)
+        {
+            AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
+
+            // "Death" はアニメーションステート名（Animator上の名前に合わせて変更）
+            if (state.IsName("Dead") && state.normalizedTime >= 1.0f)
+            {
+                Debug.Log("死亡アニメーション終了 → オブジェクト削除");
+                // 現在のアクティブなシーンを取得
+                Scene currentScene = SceneManager.GetActiveScene();
+
+                // そのシーンを再読み込みしてリセット
+                SceneManager.LoadScene(currentScene.name);
+            }
+
+            return; // 死亡中は他の処理を全部スキップ
+        }
         //if (onTheLift)
         //{
         //    Debug.Log("LIFTON");
@@ -197,6 +228,7 @@ public class Player : MonoBehaviour
             Debug.Log("クローンが残っていません！");
         }
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Ground"))
@@ -204,6 +236,10 @@ public class Player : MonoBehaviour
             isGrounded = true;
         }
         if (collision.CompareTag("Dead"))
+        {
+            PlayDeathAnimation();
+        }
+        if (collision.CompareTag("GrounDead"))
         {
             Destroy(gameObject);
         }
