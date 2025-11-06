@@ -778,7 +778,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 74b856eedacb8804cb42e4cdfdf112ea, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -934,7 +934,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 74b856eedacb8804cb42e4cdfdf112ea, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2124,7 +2124,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6282438149830009268, guid: c1e710dfc056d9d48960158f80ff66fe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.4564
+      value: -8.62
       objectReference: {fileID: 0}
     - target: {fileID: 6282438149830009268, guid: c1e710dfc056d9d48960158f80ff66fe, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2161,6 +2161,10 @@ PrefabInstance:
     - target: {fileID: 6480744973832341684, guid: c1e710dfc056d9d48960158f80ff66fe, type: 3}
       propertyPath: m_Name
       value: Dead
+      objectReference: {fileID: 0}
+    - target: {fileID: 6480744973832341684, guid: c1e710dfc056d9d48960158f80ff66fe, type: 3}
+      propertyPath: m_TagString
+      value: GrounDead
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8148378033867540533, guid: c1e710dfc056d9d48960158f80ff66fe, type: 3}
@@ -2455,7 +2459,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 74b856eedacb8804cb42e4cdfdf112ea, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2611,7 +2615,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 74b856eedacb8804cb42e4cdfdf112ea, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

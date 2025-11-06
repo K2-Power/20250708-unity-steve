@@ -3215,6 +3215,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dead (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6480744973832341684, guid: c1e710dfc056d9d48960158f80ff66fe, type: 3}
+      propertyPath: m_TagString
+      value: GrounDead
+      objectReference: {fileID: 0}
     - target: {fileID: 8148378033867540533, guid: c1e710dfc056d9d48960158f80ff66fe, type: 3}
       propertyPath: defaultSpeed
       value: 0
